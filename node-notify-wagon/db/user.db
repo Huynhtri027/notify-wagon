@@ -1,0 +1,4 @@
+{"phoneId":"12345","pseudo":"tojjto","_id":"TZyGmu8Qjug0OA2h","pushToken":"dfusl0a0oxE:APA91bHBkm6Kr83_oZJjv-5nS4BCKra7wwZcVhzEWFGl73xmHEpZutbc4nmt7QqKBJj_LQgzIULY-TiZD_3kuZBQeTjrX5sWHWgtKlJm-NcR_6Hyp23NCrMhrumRQ_7IB2CgnuCH-bcl"}
+{"phoneId":"1234dfdf5","pseudo":"toto","_id":"V5SOnoMtRfSNjFJS"}
+{"$$indexCreated":{"fieldName":"phoneId","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"pseudo","unique":true,"sparse":false}}

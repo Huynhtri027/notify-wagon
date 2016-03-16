@@ -1,0 +1,17 @@
+{
+	"page.places.title": "Les lieux",
+	"title.stations": "Les stations",
+	"title.trains": "Les trains",
+	"title.message": "Envoyer un message",
+	"item.all.stations": "Toutes les stations",
+	"item.all.trains": "Tous les trains",
+	"message.to": "Pour : ",
+	"message.peoples": "Nombre de personnes concernées: ",
+	"message.form": "Votre message",
+	"message.sent": "Votre message a été envoyé",
+	"message.error": "L'envoi de votre message a rencontré une erreur",
+	"btn.send": "Envoyer",
+	"btn.cancel": "Annuler",
+	"message.success": "message.success",
+	"form.message": "form.message"
+}
