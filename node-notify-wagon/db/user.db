@@ -2,3 +2,4 @@
 {"phoneId":"1234dfdf5","pseudo":"toto","_id":"V5SOnoMtRfSNjFJS"}
 {"$$indexCreated":{"fieldName":"phoneId","unique":true,"sparse":false}}
 {"$$indexCreated":{"fieldName":"pseudo","unique":true,"sparse":false}}
+{"phoneId":"12","pseudo":"SARRA","_id":"CTaSeGYY8ull9PQx"}
