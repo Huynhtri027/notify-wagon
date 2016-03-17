@@ -1,0 +1,25 @@
+{
+  "name": "node-notify-wagon",
+  "version": "0.1.0",
+  "description": "Backend server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Connecthings",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "boom": "^3.1.2",
+    "hapi": "~13.1.0",
+    "hapi-i18n": "^1.0.2",
+    "inert": "~3.2.0",
+    "jade": "~1.11.0",
+    "lodash": "^4.6.1",
+    "nedb": "^1.8.0",
+    "node": "0.0.0",
+    "node-gcm": "^0.14.0",
+    "vision": "^4.0.1",
+    "winston": "~2.2.0"
+  }
+}

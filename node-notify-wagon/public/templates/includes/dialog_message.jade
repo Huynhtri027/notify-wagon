@@ -1,0 +1,16 @@
+dialog.mdl-dialog
+  h4.mdl-dialog--title=__("title.message")
+  div.mdl-dialog__content
+    p
+      | #{__("message.to")}
+      span#dialog-message-to No Body
+    //p
+    //  | #{__("message.peoples")}
+    //  span#dialog-message-peoples 0000
+    div.mdl-textfield.mdl-js-textfield
+      textarea(type="text", data-success=__("message.success"), data-error=__("message.error")).mdl-textfield__input#dialog-message
+      label(for="dialog-message").mdl-textfield__label=__("message.form")
+
+  div.mdl-dialog__actions
+    button(type="button").mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--raised.mdl-button--accent.ct-dialog-send=__("btn.send")
+    button(type="button").mdl-button.ct-dialog-close=__("btn.cancel")

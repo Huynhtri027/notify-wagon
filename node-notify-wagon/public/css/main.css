@@ -1,0 +1,14 @@
+.content{
+    max-width:900px;
+    margin: 8px auto;
+}
+
+.mdl-dialog{
+  width:400px !important;
+}
+
+.mdl-layout__tab{
+    display: inline-flex;
+    vertical-align: middle;
+    color: important! red;
+}
