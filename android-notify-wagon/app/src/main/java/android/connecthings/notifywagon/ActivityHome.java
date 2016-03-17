@@ -58,7 +58,6 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         adtagBeaconManager = AdtagBeaconManager.getInstance();
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
-
         placeName = (TextView) findViewById(R.id.tv_place);
     }
     @Override

@@ -3,12 +3,12 @@ package android.connecthings.notifywagon.model;
 /**
  * Created by ssr on 16/03/16.
  */
-public class AlertMessage extends Message {
-    String type;
-    String sender;
-    String places;
+public class MessageType extends Message {
+    public String type;
+    public String sender;
+    public String places;
 
-    public AlertMessage(String message, String type, String sender, String places) {
+    public MessageType(String message, String type, String sender, String places) {
         super(message);
         this.type = type;
         this.sender = sender;
@@ -39,7 +39,7 @@ public class AlertMessage extends Message {
         this.places = places;
     }
 
-    public AlertMessage(String message) {
+    public MessageType(String message) {
         super(message);
     }
 }
