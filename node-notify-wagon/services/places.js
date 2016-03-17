@@ -74,10 +74,8 @@ module.exports.friendsInPlace = function(pseudo, itemId){
   var place = this.findPlace(itemId);
   var placesWithUsers = [];
   if(place){
-    console.log(">>>>>> place", place);
     _.forEach(place.items, (item)=>{
-      console.log(">>>>>> item", item);
-      if(item.users){
+      if(item.users && item.users.length !==0){
         placesWithUsers.push(item);
         /*_.forEach(item.users, (user)=>{
           if(user !== pseudo){

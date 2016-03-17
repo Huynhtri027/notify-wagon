@@ -95,7 +95,7 @@ module.exports.msgInBoxForPlace = function(itemId, callback){
   items = _.map(items, "id");
   console.log(">> items2: ", items);
   //places:{$in:items},
-  db.find({ type:{$ne:'social'}}, callback);
+  db.find({ type:{$ne:'social'},places:{$in:items}}, callback);
 }
 
 module.exports.msgInBoxFromFriends = function(itemId, callback){
@@ -104,7 +104,7 @@ module.exports.msgInBoxFromFriends = function(itemId, callback){
   console.log(">> items 3: ", place.items);
   if(place.type ===  'station'){
     //places:{$in:place.items}
-    db.find({ type:'social'}, callback);
+    db.find({ type:'social', places:{$in:place.items}}, callback);
   }else{
     db.find({line: place.line, direction:place.direction, type:'social'}, callback);
   }

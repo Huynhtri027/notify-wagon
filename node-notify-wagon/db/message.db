@@ -1,9 +1,9 @@
 {"message":"quelle journée","type":"alert","sender":"RATP","places":["l1-pv-chat"],"_id":"AmaHpYeLleNU4YX5"}
 {"message":"quelle journée encore une alerte","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"l1","_id":"COfTNh87ul5NLtWP"}
+{"message":"rag","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"QnFDyCmTM2mqDFuD"}
 {"message":"quelle journée encore social","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"RHEDNLh2G8RLAr2u"}
 {"message":"jolie jolie jolie","type":"social","sender":"RATP","places":["l1-pv-chat"],"_id":"dI0Mc1tT3kd0hXvc"}
-{"message":"quelle journée","type":"social","sender":"RATP","places":["l1-pv-chat"],"direction":"Porte de Vincennes","line":"l1","_id":"hsqNFJkJwWBYh9h3"}
-{"message":"quelle journée encore social","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"nWwDHw8l3vKbstzm"}
 {"message":"quelle journée super","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"ebgBht52mzTI7bKU"}
-{"message":"rag","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"QnFDyCmTM2mqDFuD"}
+{"message":"quelle journée","type":"social","sender":"RATP","places":["l1-pv-chat"],"direction":"Porte de Vincennes","line":"l1","_id":"hsqNFJkJwWBYh9h3"}
 {"message":"rag","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"mnOLirWMDBUOG2g0"}
+{"message":"quelle journée encore social","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"nWwDHw8l3vKbstzm"}
