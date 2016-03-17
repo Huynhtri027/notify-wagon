@@ -136,7 +136,8 @@ public class ConnectionManagerServices {
     //update URL custom
     public void updateTokenInformation(UserNotify userNotify, String newToken){
         StringEntity se = null;
-        String url =  new UrlNotifyWagon().getUserToUpdateToken(userNotify.getPhoneId()).toString();
+       // String url =  new UrlNotifyWagon().getUserToUpdateToken(userNotify.getPhoneId()).toString();
+        String url = "http://localhost:3000/api/user/12345";
         JSONObject jsonParams = new JSONObject();
         try {
             jsonParams.put("pushToken",newToken);
@@ -151,23 +152,37 @@ public class ConnectionManagerServices {
         // client.post(null,url, se, "application/json", responseHandler);
         client.put(null, url, se, "application/json", responseHandler);
     }
-   public Box getListBox(String userPseudo, String placeID) throws JSONException{
+   public void getListBox(String userPseudo, String placeID)  {
 
-      // String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
-       String url = "http://localhost:3000/api/message/box/leo/l1-pv-chat";
-           client.get(url, null, new JsonHttpResponseHandler() {
-               @Override
-               public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                   // If the response is JSONObject instead of expected JSONArray
-                   Log.d("SUCCESS BOX ",response+"");
-               }
-               @Override
-               public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                   // Pull out the first event on the public timeline
-                    Log.d("SUCCESS BOX ",timeline+"");
-               }
-           });
-    return null;
+       String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
+       client.get(url, new AsyncHttpResponseHandler() {
+
+           @Override
+           public void onStart() {
+               // called before request is started
+               Log.d("ONSTARAART","start");
+           }
+
+           @Override
+           public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+               // called when response HTTP status is "200 OK"
+               Log.d("onSuccess","onSuccess");
+           }
+
+           @Override
+           public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+               Log.d("onFailure",statusCode +"");
+               // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+           }
+
+           @Override
+           public void onRetry(int retryNo) {
+               Log.d("onRetry","onRetry");
+               // called when request is retried
+           }
+       });
+
+  //  return null;
    }
 
 }

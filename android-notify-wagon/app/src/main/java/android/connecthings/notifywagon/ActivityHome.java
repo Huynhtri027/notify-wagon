@@ -47,7 +47,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -62,6 +64,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
         placeName = (TextView) findViewById(R.id.tv_place);
+ 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
