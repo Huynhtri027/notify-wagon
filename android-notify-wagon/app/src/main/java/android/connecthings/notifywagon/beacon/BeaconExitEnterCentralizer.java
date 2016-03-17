@@ -5,23 +5,34 @@ import android.app.PendingIntent;
 import android.connecthings.adtag.model.sdk.BeaconContent;
 import android.connecthings.notifywagon.ActivityHome;
 import android.connecthings.notifywagon.R;
+import android.connecthings.notifywagon.ResponseHandler.GsonResponseHandler;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.Box;
+import android.connecthings.notifywagon.model.EnterExitBox;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.notifywagon.utils.NotificationUtils;
+import android.connecthings.util.Log;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  *  Hack : the SDK Connecthings is not designed to do this normally
  */
 public class BeaconExitEnterCentralizer {
+
+
+    private static final String TAG = "ExitEnterCentralizer";
 
     private static BeaconExitEnterCentralizer INSTANCE;
 
@@ -38,10 +49,16 @@ public class BeaconExitEnterCentralizer {
     private NotificationManager notificationManager;
     private Context applicationContext;
 
+    ConnectionManagerServices connectionManagerServices;
+
+    private Gson gson;
+
     private BeaconExitEnterCentralizer(Context context){
         beaconContentHistory = new ArrayList<>();
         applicationContext = context.getApplicationContext();
         notificationManager = (NotificationManager) applicationContext.getSystemService(context.NOTIFICATION_SERVICE);
+        connectionManagerServices = ConnectionManagerServices.getInstance();
+        gson = new Gson();
     }
 
     public static void initInstance(Context context){
@@ -69,7 +86,7 @@ public class BeaconExitEnterCentralizer {
         beaconContentHistory.add(beaconContent);
         previousBeaconContent = currentBeaconContent;
         currentBeaconContent = beaconContent;
-        notifyBackendAboutExitEnter();
+        notifyBackendAboutExitEnter(previousBeaconContent, currentBeaconContent);
     }
 
     public BeaconContent getPreviousBeaconContent(){
@@ -80,7 +97,25 @@ public class BeaconExitEnterCentralizer {
         return currentBeaconContent;
     }
 
-    private void notifyBackendAboutExitEnter() {
+
+    private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
+        String idPreviousBeaconContent = previousBeaconContent==null?null:previousBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
+        String idCurrentBeaconContent = previousBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
+        Log.d(TAG, "notify backend about exit enter");
+        connectionManagerServices.updatePlaceStatus("toto", "theo-wa1", "theo-wa2", new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                onBackendError(currentBeaconContent);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, EnterExitBox box) {
+                onBackendSuccess(currentBeaconContent, box.getBox());
+            }
+        });
+    }
+
+    private void onBackendSuccess(final BeaconContent currentBeaconContent, Box box){
         previousNwBeacon = currentNwBeacon;
         currentNwBeacon = new NwBeacon(currentBeaconContent, new Box());
 
@@ -88,6 +123,12 @@ public class BeaconExitEnterCentralizer {
             createNotification(previousNwBeacon, currentNwBeacon);
         }else{
             onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
+        }
+    }
+
+    private void onBackendError(BeaconContent beaconContent){
+        if(onEnterPlace != null){
+            onEnterPlace.onBackendError(currentNwBeacon, new NwBeacon(beaconContent, null));
         }
     }
 

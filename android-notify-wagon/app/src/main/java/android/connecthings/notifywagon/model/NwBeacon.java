@@ -10,6 +10,8 @@ import android.connecthings.adtag.model.sdk.Technology;
 import android.connecthings.util.BEACON_PROXIMITY;
 import android.os.Parcel;
 
+import java.util.ArrayList;
+
 /**
  */
 public class NwBeacon {
@@ -24,6 +26,18 @@ public class NwBeacon {
 
     public Box getBox(){
         return box;
+    }
+
+    public ArrayList<Message> getMessagePlace() {
+        return box.getMessagePlace();
+    }
+
+    public ArrayList<Wagon> getFriends() {
+        return box.getFriends();
+    }
+
+    public ArrayList<Message> getMessageFriends() {
+        return box.getMessageFriends();
     }
 
     public Beacon getBeacon() {

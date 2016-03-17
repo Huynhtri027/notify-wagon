@@ -1,16 +1,18 @@
 package android.connecthings.notifywagon.utils;
 
-import android.connecthings.notifywagon.model.MessageType;
 import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
+import android.connecthings.notifywagon.url.NwUrlUser;
 import android.connecthings.notifywagon.url.UrlNotifyWagon;
-import android.util.Log;
+import android.connecthings.util.Log;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.ResponseHandlerInterface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,19 @@ import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
 /**
- * Created by ssr on 16/03/16.
  */
 public class ConnectionManagerServices {
 
-    private static AsyncHttpClient client = new AsyncHttpClient();
-    private static AsyncHttpResponseHandler responseHandler;
+    private static final String TAG = "ConnectionManagerServices";
+
+    private static ConnectionManagerServices INSTANCE;
+
+    private AsyncHttpClient client = new AsyncHttpClient();
+    private AsyncHttpResponseHandler responseHandler;
+
     private Gson gson;
 
-    public ConnectionManagerServices() {
+    private ConnectionManagerServices() {
         gson = new Gson();
         responseHandler  = new AsyncHttpResponseHandler() {
             @Override
@@ -39,9 +45,23 @@ public class ConnectionManagerServices {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("SERVER FEEDBACK-FAILED",statusCode+"");
+                Log.d("SERVER FEEDBACK-FAILED", statusCode + "");
             }
         };
+    }
+
+    public static ConnectionManagerServices getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new ConnectionManagerServices();
+        }
+        return INSTANCE;
+    }
+
+    public void updatePlaceStatus(String pseudo, String exitPlaceId, String enterPlaceId, ResponseHandlerInterface responseHandler){
+        NwUrlUser urlUser = new NwUrlUser();
+        urlUser.updatePlace(pseudo, exitPlaceId, enterPlaceId);
+        Log.d(TAG, "urlUser ", urlUser);
+        client.get(urlUser.toString(), responseHandler);
     }
 
     public void registerUSerToJsonWebService(UserNotify userNotify, String url) {
@@ -95,7 +115,7 @@ public class ConnectionManagerServices {
         client.post(null,url, se, "application/json", responseHandler);
     }
 
-    public void sendAlertMessageToJsonWebService(MessageType alertMessage , String url){
+    public void sendAlertMessageToJsonWebService(Message alertMessage , String url){
         StringEntity se = null;
         JSONObject jsonParams = new JSONObject();
         try {

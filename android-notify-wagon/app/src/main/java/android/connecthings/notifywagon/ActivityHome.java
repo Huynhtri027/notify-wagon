@@ -5,7 +5,9 @@ import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
+import android.connecthings.util.Log;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -13,7 +15,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +36,7 @@ import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
+    private static final String TAG = "ActivityHome";
 
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
@@ -99,6 +102,11 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
         placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
+        Log.d(TAG, "success ", currentBeacon.getBox());
+    }
+
+    public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){
+        Log.d(TAG, "backend error");
     }
 
 

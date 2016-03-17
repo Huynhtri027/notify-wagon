@@ -8,4 +8,6 @@ public interface OnEnterPlace {
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon);
 
+    public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon);
+
 }

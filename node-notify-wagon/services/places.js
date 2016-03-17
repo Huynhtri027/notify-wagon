@@ -58,7 +58,8 @@ module.exports.userEnters = function(user, place){
 
 module.exports.userExits = function(user, place){
   var place = initUsersInItem(place);
-  if(place.users == null){
+
+  if(place == null){
     return "placeNotFound";
   }
   var index = place.users.indexOf(user);
