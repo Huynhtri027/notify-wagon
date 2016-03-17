@@ -3,7 +3,6 @@ package android.connecthings.notifywagon.beacon;
 import android.connecthings.adtag.adtagEnum.FEED_STATUS;
 import android.connecthings.adtag.model.sdk.BeaconContent;
 import android.connecthings.util.Log;
-import android.connecthings.util.adtag.beacon.model.ApplicationState;
 import android.connecthings.util.adtag.beacon.model.BeaconRange;
 import android.connecthings.util.adtag.beacon.parser.AppleBeacon;
 
@@ -30,10 +29,13 @@ public class NwBeaconRange implements BeaconRange{
         if(previousBeaconContentList != null){
             beaconContents.removeAll(previousBeaconContentList);
             Log.d(TAG, "beaconContents: ", beaconContents);
-            //very simple test normally beaconContents size in demo will be only 2
+            //very simple test normally beaconContents size in demo will be only 1 at maximum
             if(beaconContents.size() !=0 ){
                 beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
             }
+        }else{
+            beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
+            previousBeaconContentList = beaconContents;
         }
 
     }
