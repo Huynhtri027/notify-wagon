@@ -3,10 +3,12 @@ package android.connecthings.notifywagon.utils;
 import android.connecthings.notifywagon.model.AlertMessage;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
+import android.connecthings.notifywagon.url.UrlNotifyWagon;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,6 +59,23 @@ public class ConnectionManagerServices {
         client.post(null,url, se, "application/json", responseHandler);
     }
 
+    public void registerUSerToJsonWebServiceWithToken(UserNotify userNotify, String url) {
+        StringEntity se = null;
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("phoneId",userNotify.getPhoneId());
+            jsonParams.put("pseudo",userNotify.getPseudo());
+            jsonParams.put("pushToken",userNotify.getTokenId());
+            se = new StringEntity(jsonParams.toString());
+            Log.d("json",jsonParams.toString()+"");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        client.post(null,url, se, "application/json", responseHandler);
+    }
 
     public void sendMessageToFriendsToJsonWebService(Message message, String url) {
         StringEntity se = null;
@@ -92,9 +111,23 @@ public class ConnectionManagerServices {
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         client.post(null,url, se, "application/json", responseHandler);
     }
-
-    public void getList(){
-
+    //update URL custom
+    public void updateTokenInformation(UserNotify userNotify, String newToken){
+        StringEntity se = null;
+        String url =  new UrlNotifyWagon().getUserToUpdateToken(userNotify.getPhoneId()).toString();
+        JSONObject jsonParams = new JSONObject();
+        try {
+            jsonParams.put("pushToken",newToken);
+            se = new StringEntity(jsonParams.toString());
+            Log.d("json",jsonParams.toString()+"");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        // client.post(null,url, se, "application/json", responseHandler);
+        client.put(null, url, se, "application/json", responseHandler);
     }
 
 

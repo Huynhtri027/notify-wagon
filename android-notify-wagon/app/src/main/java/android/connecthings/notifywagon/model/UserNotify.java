@@ -7,6 +7,7 @@ public class UserNotify {
 
     String phoneId;
     String pseudo;
+    String tokenId;
 
     public UserNotify(String phoneId) {
         this.phoneId = phoneId;
@@ -15,6 +16,14 @@ public class UserNotify {
     public UserNotify(String phoneId, String pseudo) {
         this.phoneId = phoneId;
         this.pseudo = pseudo;
+    }
+
+    public String getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
     }
 
     public String getPhoneId() {
