@@ -10,7 +10,7 @@
         android:name=".ApplicationNotifyWagon"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Home"
+            android:name=".ActivityHome"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

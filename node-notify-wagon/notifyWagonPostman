@@ -62,12 +62,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1458062497302,
+			"time": 1458140429539,
 			"name": "Message-dispatch",
 			"description": "",
 			"collectionId": "29f1f3fe-56ad-cf76-808c-bd3b94b724b1",
 			"responses": [],
-			"rawModeData": "{\n\"message\":\"quel message mais quel message LLL\",\n\"type\":\"alert\",\n\"sender\":\"RATP\",\n\"places\":[\"l1-v-chat\"]\n}"
+			"rawModeData": "{\n\"message\":\"quelle journée encore social\",\n\"type\":\"social\",\n\"sender\":\"RATP\",\n\"places\":[\"theo-wa1\", \"theo-wa2\", \"theo-wa3\"],\n\"direction\":\"Porte de Vincennes\",\n\"line\":\"1\"\n}"
 		},
 		{
 			"id": "299f9daa-467f-2ff2-d961-fadebb311a12",
@@ -112,7 +112,7 @@
 		{
 			"id": "84104ea6-53a9-3e41-9cf2-ad1c35358a66",
 			"headers": "",
-			"url": "http://localhost:3000/api/user/tojjto/enters/l1-v-chat",
+			"url": "http://localhost:3000/api/user/tojjto/enters/l1-pv-chat",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -122,7 +122,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1458060396443,
+			"time": 1458135840479,
 			"name": "User enters in place",
 			"description": "",
 			"collectionId": "29f1f3fe-56ad-cf76-808c-bd3b94b724b1",
@@ -191,7 +191,7 @@
 		{
 			"id": "d517fc66-9273-a4da-99f6-990ec25fa8ed",
 			"headers": "",
-			"url": "http://localhost:3000/api/user/leo/exits/l1-v-chat",
+			"url": "http://localhost:3000/api/user/tojjto/exits/l1-pv-chat",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -201,7 +201,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1457966468912,
+			"time": 1458135838911,
 			"name": "User Exits from place",
 			"description": "",
 			"collectionId": "29f1f3fe-56ad-cf76-808c-bd3b94b724b1",
@@ -210,7 +210,7 @@
 		{
 			"id": "e04da4c4-a1ed-8f2a-2c98-e0b38b2e9f95",
 			"headers": "",
-			"url": "http://localhost:3000/api/message/box/leo/l1-v-chat",
+			"url": "http://localhost:3000/api/message/box/leo/l1-pv-chat",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -220,8 +220,8 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1458034539593,
-			"name": "get user messages from place",
+			"time": 1458140137909,
+			"name": "user box for mobile",
 			"description": "",
 			"collectionId": "29f1f3fe-56ad-cf76-808c-bd3b94b724b1",
 			"responses": []

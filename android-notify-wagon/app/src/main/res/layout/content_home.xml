@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="android.connecthings.notifywagon.Home"
+    tools:context=".ActivityHome"
     tools:showIn="@layout/activity_home">
 
     <fragment
@@ -18,4 +18,10 @@
         android:tag="fragmentPushTokenStatus"
         android:name="android.connecthings.notifywagon.push.FragmentPushTokenStatus"
         />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/tv_place" />
+
+
 </RelativeLayout>

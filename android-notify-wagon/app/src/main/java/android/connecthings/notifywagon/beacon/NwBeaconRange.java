@@ -29,6 +29,7 @@ public class NwBeaconRange implements BeaconRange{
         Log.d(TAG, "ranging ", beacons, " beaconContents ", beaconContents);
         if(previousBeaconContentList != null){
             beaconContents.removeAll(previousBeaconContentList);
+            Log.d(TAG, "beaconContents: ", beaconContents);
             //very simple test normally beaconContents size in demo will be only 2
             if(beaconContents.size() !=0 ){
                 beaconExitEnterCentralizer.onEnter(beaconContents.get(0));

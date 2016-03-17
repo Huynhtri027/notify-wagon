@@ -1,6 +1,10 @@
 package android.connecthings.notifywagon;
 
+import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
+import android.connecthings.notifywagon.beacon.OnEnterPlace;
+import android.connecthings.notifywagon.model.AdtagModel;
+import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.nfc.Tag;
@@ -13,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -27,11 +32,14 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
-public class Home extends AppCompatActivity  {
+public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
 
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
+    private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
+
+    private TextView placeName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +57,9 @@ public class Home extends AppCompatActivity  {
         });
         adtagBeaconManager = AdtagBeaconManager.getInstance();
         nwBeaconRange = new NwBeaconRange();
+        beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
 
+        placeName = (TextView) findViewById(R.id.tv_place);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,6 +72,7 @@ public class Home extends AppCompatActivity  {
         super.onResume();
         if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
             adtagBeaconManager.onActivityResumed(nwBeaconRange);
+            beaconExitEnterCentralizer.registerOnEnterPlace(this);
         }
     }
 
@@ -69,13 +80,14 @@ public class Home extends AppCompatActivity  {
         super.onPause();
         if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
             adtagBeaconManager.onActivityPaused(nwBeaconRange);
+            beaconExitEnterCentralizer.unregisterOnEnterPlace();
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the ActivityHome/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -86,7 +98,9 @@ public class Home extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
-
+    public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
+        placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
+    }
 
 
 }

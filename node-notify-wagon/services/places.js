@@ -72,21 +72,22 @@ module.exports.userExits = function(user, place){
 
 module.exports.friendsInPlace = function(pseudo, itemId){
   var place = this.findPlace(itemId);
-  var usersInPace = [];
+  var placesWithUsers = [];
   if(place){
     console.log(">>>>>> place", place);
     _.forEach(place.items, (item)=>{
       console.log(">>>>>> item", item);
       if(item.users){
-        _.forEach(item.users, (user)=>{
+        placesWithUsers.push(item);
+        /*_.forEach(item.users, (user)=>{
           if(user !== pseudo){
             var place = _.cloneDeep(item);
             delete place.users;
             usersInPace.push({user: user, place: place})
           }
-        });
+        });*/
       }
     });
   }
-  return usersInPace;
+  return placesWithUsers;
 }
