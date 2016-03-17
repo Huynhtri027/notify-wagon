@@ -1,6 +1,6 @@
 package android.connecthings.notifywagon.utils;
 
-import android.connecthings.notifywagon.model.AlertMessage;
+import android.connecthings.notifywagon.model.MessageType;
 import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
@@ -91,7 +91,7 @@ public class ConnectionManagerServices {
         client.post(null,url, se, "application/json", responseHandler);
     }
 
-    public void sendAlertMessageToJsonWebService(AlertMessage alertMessage , String url){
+    public void sendAlertMessageToJsonWebService(MessageType alertMessage , String url){
         StringEntity se = null;
         JSONObject jsonParams = new JSONObject();
         try {
@@ -129,7 +129,8 @@ public class ConnectionManagerServices {
     }
    public Box getListBox(String userPseudo, String placeID) throws JSONException{
 
-       String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
+      // String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
+       String url = "http://localhost:3000/api/message/box/leo/l1-pv-chat";
            client.get(url, null, new JsonHttpResponseHandler() {
                @Override
                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
