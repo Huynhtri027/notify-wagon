@@ -29,19 +29,7 @@ import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class Home extends AppCompatActivity  {
-    private static AsyncHttpClient client = new AsyncHttpClient();
 
-    private static AsyncHttpResponseHandler responseHandler = new AsyncHttpResponseHandler() {
-        @Override
-        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-            Log.d("test", "Success Register");
-        }
-
-        @Override
-        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-            Log.d("FAILED ",statusCode+"");
-        }
-    };
 
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
@@ -60,10 +48,9 @@ public class Home extends AppCompatActivity  {
                         .setAction("Action", null).show();
             }
         });
-        Personne p = new Personne("12","SARRA");
-        registerJSonObject(p,"http://192.168.2.101:3000/api/user");
         adtagBeaconManager = AdtagBeaconManager.getInstance();
         nwBeaconRange = new NwBeaconRange();
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,26 +88,6 @@ public class Home extends AppCompatActivity  {
     }
 
 
-    public void registerJSonObject(Personne personne, String url) {
-        StringEntity se = null;
-        JSONObject jsonParams = new JSONObject();
-        try {
-            jsonParams.put("phoneId",personne.getPhoneId());
-            jsonParams.put("pseudo",personne.getPseudo());
-            se = new StringEntity(jsonParams.toString());
-
-            Log.d("json",jsonParams.toString()+"");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-
-        }
-        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        Log.d("test SEEE", jsonParams.toString() + "");
-        client.post(null,url, se, "application/json", responseHandler);
-    }
 
 
 }
