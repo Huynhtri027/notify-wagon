@@ -1,20 +1,18 @@
 package android.connecthings.notifywagon.utils;
 
 import android.connecthings.notifywagon.model.AlertMessage;
+import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
 import android.connecthings.notifywagon.url.UrlNotifyWagon;
 import android.util.Log;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
+import com.loopj.android.http.JsonHttpResponseHandler;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
-
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
@@ -129,6 +127,22 @@ public class ConnectionManagerServices {
         // client.post(null,url, se, "application/json", responseHandler);
         client.put(null, url, se, "application/json", responseHandler);
     }
+   public Box getListBox(String userPseudo, String placeID) throws JSONException{
 
+       String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
+           client.get(url, null, new JsonHttpResponseHandler() {
+               @Override
+               public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                   // If the response is JSONObject instead of expected JSONArray
+                   Log.d("SUCCESS BOX ",response+"");
+               }
+               @Override
+               public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                   // Pull out the first event on the public timeline
+                    Log.d("SUCCESS BOX ",timeline+"");
+               }
+           });
+    return null;
+   }
 
 }
