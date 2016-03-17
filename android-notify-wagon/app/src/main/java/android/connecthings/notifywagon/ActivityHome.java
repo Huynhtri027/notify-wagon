@@ -27,7 +27,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
-public class Home extends AppCompatActivity  {
+public class ActivityHome extends AppCompatActivity  {
 
 
     private NwBeaconRange nwBeaconRange;
@@ -75,7 +75,7 @@ public class Home extends AppCompatActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the ActivityHome/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 

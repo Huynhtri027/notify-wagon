@@ -1,4 +1,4 @@
-package android.connecthings.notifywagon.utils;
+package android.connecthings.notifywagon.fragment;
 
 
 import android.app.Fragment;

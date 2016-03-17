@@ -3,7 +3,7 @@ package android.connecthings.notifywagon.push;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.connecthings.notifywagon.Home;
+import android.connecthings.notifywagon.ActivityHome;
 import android.connecthings.notifywagon.R;
 import android.content.Context;
 import android.content.Intent;
@@ -52,7 +52,7 @@ public class PushNotificationServiceListener extends GcmListenerService{
      * @param message GCM message received.
      */
     private void sendNotification(String message) {
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, ActivityHome.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
