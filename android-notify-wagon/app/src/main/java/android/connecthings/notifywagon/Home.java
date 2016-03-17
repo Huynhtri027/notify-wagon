@@ -1,6 +1,9 @@
 package android.connecthings.notifywagon;
 
 import android.connecthings.notifywagon.Model.Personne;
+import android.connecthings.notifywagon.beacon.NwBeaconRange;
+import android.connecthings.util.BLE_STATUS;
+import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -40,6 +43,9 @@ public class Home extends AppCompatActivity  {
         }
     };
 
+    private NwBeaconRange nwBeaconRange;
+    private AdtagBeaconManager adtagBeaconManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +62,28 @@ public class Home extends AppCompatActivity  {
         });
         Personne p = new Personne("12","SARRA");
         registerJSonObject(p,"http://192.168.2.101:3000/api/user");
-
+        adtagBeaconManager = AdtagBeaconManager.getInstance();
+        nwBeaconRange = new NwBeaconRange();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
+    }
+
+    public void onResume(){
+        super.onResume();
+        if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
+            adtagBeaconManager.onActivityResumed(nwBeaconRange);
+        }
+    }
+
+    public void onPause(){
+        super.onPause();
+        if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
+            adtagBeaconManager.onActivityPaused(nwBeaconRange);
+        }
     }
 
     @Override
