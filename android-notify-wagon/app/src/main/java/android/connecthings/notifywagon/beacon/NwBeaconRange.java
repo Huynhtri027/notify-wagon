@@ -34,7 +34,9 @@ public class NwBeaconRange implements BeaconRange{
                 beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
             }
         }else{
-            beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
+            if(beaconContents.size() !=0 ){
+                beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
+            }
             previousBeaconContentList = beaconContents;
         }
 
