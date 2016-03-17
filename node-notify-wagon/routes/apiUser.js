@@ -2,7 +2,7 @@
 var rootPath = "/api/user";
 var _ = require("lodash");
 var Boom = require("boom");
-
+var log = require("../utils/log")();
 var servicePlacesold = require("../services/places_old");
 var servicePlaces = require("../services/places");
 var serviceUsers = require("../services/users");
@@ -58,6 +58,7 @@ module.exports = [
       handler: function (request, reply) {
         var data = request.params;
         var response = {};
+        log.d("updatePlace: ", data);
         if(data.exitPlace !== "none"){
           response.userExit = _.cloneDeep(data);
           response.userExit.status = servicePlaces.userExits(data.user, data.exitPlace);

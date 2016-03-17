@@ -29,17 +29,18 @@ public class NwBeaconRange implements BeaconRange{
         if(previousBeaconContentList != null){
             beaconContents.removeAll(previousBeaconContentList);
             Log.d(TAG, "beaconContents: ", beaconContents);
-            //very simple test normally beaconContents size in demo will be only 1 at maximum
-            if(beaconContents.size() !=0 ){
-                beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
-            }
+            notifyAboutEntry(beaconContents);
         }else{
-            if(beaconContents.size() !=0 ){
-                beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
-                previousBeaconContentList = beaconContents;
-            }
-
+            notifyAboutEntry(beaconContents);
         }
 
+    }
+
+    //very simple test normally beaconContents size in demo will be only 1 at maximum
+    private void notifyAboutEntry(List<BeaconContent> beaconContents){
+        if(beaconContents.size() !=0 ){
+            beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
+            previousBeaconContentList = beaconContents;
+        }
     }
 }

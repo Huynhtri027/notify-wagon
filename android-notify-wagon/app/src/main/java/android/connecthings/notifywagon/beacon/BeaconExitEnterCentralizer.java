@@ -102,7 +102,7 @@ public class BeaconExitEnterCentralizer {
         String idPreviousBeaconContent = previousBeaconContent==null?null:previousBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         String idCurrentBeaconContent = currentBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         Log.d(TAG, "notify backend about exit enter ", idPreviousBeaconContent, idCurrentBeaconContent);
-        connectionManagerServices.updatePlaceStatus("toto", "theo-wa1", "theo-wa2", new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
+        connectionManagerServices.updatePlaceStatus("toto", idPreviousBeaconContent, idCurrentBeaconContent, new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 onBackendError(currentBeaconContent);

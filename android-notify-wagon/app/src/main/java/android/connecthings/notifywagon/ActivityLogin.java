@@ -2,15 +2,12 @@ package android.connecthings.notifywagon;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LoginActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
     Button connect;
     EditText pseudoUser;
     String userPseudo;
@@ -29,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 // test connection
-                Intent myIntent = new Intent(LoginActivity.this, ActivityHome.class);
-                LoginActivity.this.startActivity(myIntent);
+                Intent myIntent = new Intent(ActivityLogin.this, ActivityHome.class);
+                ActivityLogin.this.startActivity(myIntent);
             }
         });
 

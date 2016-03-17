@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:background="?attr/colorPrimary"
 
-    tools:context="android.connecthings.notifywagon.LoginActivity">
+    tools:context=".ActivityLogin">
     <include layout="@layout/content_login" />
 
     <ImageView
