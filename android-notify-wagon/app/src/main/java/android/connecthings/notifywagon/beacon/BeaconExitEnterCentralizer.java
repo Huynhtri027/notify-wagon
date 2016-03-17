@@ -79,6 +79,9 @@ public class BeaconExitEnterCentralizer {
 
     public void registerOnEnterPlace(OnEnterPlace onEnterPlace){
         this.onEnterPlace = onEnterPlace;
+        if(currentNwBeacon!=null){
+           //this.onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
+        }
     }
 
     public void unregisterOnEnterPlace(){
@@ -122,6 +125,7 @@ public class BeaconExitEnterCentralizer {
     }
 
     private void onBackendSuccess(final BeaconContent currentBeaconContent, Box box){
+
         previousNwBeacon = currentNwBeacon;
         currentNwBeacon = new NwBeacon(currentBeaconContent, box);
 

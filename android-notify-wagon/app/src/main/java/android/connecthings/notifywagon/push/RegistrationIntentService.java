@@ -88,7 +88,7 @@ public class RegistrationIntentService extends IntentService {
      */
     private void sendRegistrationToServer(String token) {
         // Add custom implementation, as needed.
-        if(sharedPreference.getTokenRegistrationStatus()){
+       if(sharedPreference.getTokenRegistrationStatus()){
             ConnectionManagerServices.getInstance().updateUser(token, Utils.getDeviceId(getApplicationContext()), new TextHttpResponseHandler() {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -120,7 +120,7 @@ public class RegistrationIntentService extends IntentService {
             });
 
         }
-
+        //*/
     }
 
     /**

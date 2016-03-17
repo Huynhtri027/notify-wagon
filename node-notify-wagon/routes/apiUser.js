@@ -59,6 +59,9 @@ module.exports = [
       method: ['GET'],
       path: rootPath + '/{user}/updatePlace/{exitPlace}/{enterPlace}',
       handler: function (request, reply) {
+        console.log(">>>> enterPlace");
+        //strange error when calling again the url with same enterPlace
+        //hard to say it's the application or the backend don't see strange log
         var data = request.params;
         var response = {};
         log.d("updatePlace: ", data);
@@ -71,6 +74,7 @@ module.exports = [
           response.userEnter.status = servicePlaces.userEnters(data.user, data.enterPlace);
           serviceMobileBox.buildMobileBox(data.user, data.enterPlace,function(error, box){
             if(error){
+              console.log(">>> error box", error);
               return reply(Boom.wrap(error, 400));
             }
             response.box = box;
