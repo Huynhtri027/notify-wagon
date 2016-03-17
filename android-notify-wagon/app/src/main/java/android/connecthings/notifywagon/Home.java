@@ -1,6 +1,5 @@
 package android.connecthings.notifywagon;
 
-import android.connecthings.notifywagon.Model.Personne;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
