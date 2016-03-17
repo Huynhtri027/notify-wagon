@@ -20,12 +20,23 @@
             android:name=".ActivityLogin"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+
+
+        <activity
+            android:name=".utils.ActivityHome_test"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
