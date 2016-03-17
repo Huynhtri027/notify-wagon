@@ -5,6 +5,7 @@ import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.nfc.Tag;
@@ -44,7 +45,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -59,6 +62,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
         placeName = (TextView) findViewById(R.id.tv_place);
+ 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
