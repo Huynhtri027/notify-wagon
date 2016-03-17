@@ -100,8 +100,8 @@ public class BeaconExitEnterCentralizer {
 
     private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
         String idPreviousBeaconContent = previousBeaconContent==null?null:previousBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
-        String idCurrentBeaconContent = previousBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
-        Log.d(TAG, "notify backend about exit enter");
+        String idCurrentBeaconContent = currentBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
+        Log.d(TAG, "notify backend about exit enter ", idPreviousBeaconContent, idCurrentBeaconContent);
         connectionManagerServices.updatePlaceStatus("toto", "theo-wa1", "theo-wa2", new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
@@ -117,7 +117,7 @@ public class BeaconExitEnterCentralizer {
 
     private void onBackendSuccess(final BeaconContent currentBeaconContent, Box box){
         previousNwBeacon = currentNwBeacon;
-        currentNwBeacon = new NwBeacon(currentBeaconContent, new Box());
+        currentNwBeacon = new NwBeacon(currentBeaconContent, box);
 
         if(onEnterPlace == null){
             createNotification(previousNwBeacon, currentNwBeacon);
@@ -128,7 +128,7 @@ public class BeaconExitEnterCentralizer {
 
     private void onBackendError(BeaconContent beaconContent){
         if(onEnterPlace != null){
-            onEnterPlace.onBackendError(currentNwBeacon, new NwBeacon(beaconContent, null));
+            onEnterPlace.onBackendError(currentNwBeacon, new NwBeacon(beaconContent, new Box()));
         }
     }
 

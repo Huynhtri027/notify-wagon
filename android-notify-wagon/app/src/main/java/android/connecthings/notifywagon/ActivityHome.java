@@ -102,7 +102,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
         placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
-        Log.d(TAG, "success ", currentBeacon.getBox());
+        Log.d(TAG, "success friends: ", currentBeacon.getBox().getFriends());
+        Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
+        Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
+
     }
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){
