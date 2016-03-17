@@ -18,4 +18,10 @@
         android:tag="fragmentPushTokenStatus"
         android:name="android.connecthings.notifywagon.push.FragmentPushTokenStatus"
         />
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/tv_place" />
+
+
 </RelativeLayout>

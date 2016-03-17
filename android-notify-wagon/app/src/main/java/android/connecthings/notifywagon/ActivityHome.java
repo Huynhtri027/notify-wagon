@@ -1,6 +1,9 @@
 package android.connecthings.notifywagon;
 
+import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
+import android.connecthings.notifywagon.beacon.OnEnterPlace;
+import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.nfc.Tag;
@@ -27,11 +30,12 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
 
-public class ActivityHome extends AppCompatActivity  {
+public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
 
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
+    private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class ActivityHome extends AppCompatActivity  {
         });
         adtagBeaconManager = AdtagBeaconManager.getInstance();
         nwBeaconRange = new NwBeaconRange();
+        beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
 
     }
     @Override
@@ -62,6 +67,7 @@ public class ActivityHome extends AppCompatActivity  {
         super.onResume();
         if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
             adtagBeaconManager.onActivityResumed(nwBeaconRange);
+            beaconExitEnterCentralizer.registerOnEnterPlace(this);
         }
     }
 
@@ -69,6 +75,7 @@ public class ActivityHome extends AppCompatActivity  {
         super.onPause();
         if(adtagBeaconManager.checkBleStatus() != BLE_STATUS.NOT_SUPPORTED && adtagBeaconManager.isBleAccessAuthorize()){
             adtagBeaconManager.onActivityPaused(nwBeaconRange);
+            beaconExitEnterCentralizer.unregisterOnEnterPlace();
         }
     }
 
@@ -86,7 +93,9 @@ public class ActivityHome extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
 
+    }
 
 
 }
