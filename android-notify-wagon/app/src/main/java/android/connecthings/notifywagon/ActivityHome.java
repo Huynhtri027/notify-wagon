@@ -3,6 +3,7 @@ package android.connecthings.notifywagon;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
+import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -37,6 +39,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private AdtagBeaconManager adtagBeaconManager;
     private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
 
+    private TextView placeName = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
 
+        placeName = (TextView) findViewById(R.id.tv_place);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,7 +99,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     }
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
-
+        placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
     }
 
 
