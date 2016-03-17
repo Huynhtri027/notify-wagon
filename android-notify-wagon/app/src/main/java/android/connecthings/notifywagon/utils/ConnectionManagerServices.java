@@ -78,17 +78,33 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null,url, se, "application/json", responseHandler);
+        client.post(null, url, se, "application/json", responseHandler);
     }
 
-    public void registerUSerToJsonWebServiceWithToken(UserNotify userNotify, String url) {
+    public void saveUser(UserNotify userNotify, ResponseHandlerInterface responseHandler) {
         StringEntity se = null;
+        NwUrlUser urlUser = new NwUrlUser();
+        urlUser.saveUser();
+        Log.d(TAG, "url user: ", urlUser.toString());
+        try {
+            se = new StringEntity(gson.toJson(userNotify, UserNotify.class));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        client.post(null, urlUser.toString(), se, "application/json", responseHandler);
+    }
+
+    //update URL custom
+    public void updateUser(String token, String phoneId, ResponseHandlerInterface responseHandler){
+        StringEntity se = null;
+        NwUrlUser urlUser = new NwUrlUser();
+        urlUser.updateUser(phoneId);
+        Log.d(TAG, "url user update: ", urlUser.toString());
         JSONObject jsonParams = new JSONObject();
         try {
-            jsonParams.put("phoneId",userNotify.getPhoneId());
-            jsonParams.put("pseudo",userNotify.getPseudo());
-            jsonParams.put("pushToken",userNotify.getTokenId());
-            se = new StringEntity(gson.toJson(userNotify, UserNotify.class));
+            jsonParams.put("pushToken",token);
+            se = new StringEntity(jsonParams.toString());
             Log.d("json",jsonParams.toString()+"");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -96,7 +112,8 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null,url, se, "application/json", responseHandler);
+        // client.post(null,url, se, "application/json", responseHandler);
+        client.put(null, urlUser.toString(), se, "application/json", responseHandler);
     }
 
     public void sendMessageToFriendsToJsonWebService(Message message, String url) {
@@ -131,27 +148,10 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null,url, se, "application/json", responseHandler);
+        client.post(null, url, se, "application/json", responseHandler);
     }
-    //update URL custom
-    public void updateTokenInformation(UserNotify userNotify, String newToken){
-        StringEntity se = null;
-       // String url =  new UrlNotifyWagon().getUserToUpdateToken(userNotify.getPhoneId()).toString();
-        String url = "http://localhost:3000/api/user/12345";
-        JSONObject jsonParams = new JSONObject();
-        try {
-            jsonParams.put("pushToken",newToken);
-            se = new StringEntity(jsonParams.toString());
-            Log.d("json",jsonParams.toString()+"");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        // client.post(null,url, se, "application/json", responseHandler);
-        client.put(null, url, se, "application/json", responseHandler);
-    }
+
+
    public void getListBox(String userPseudo, String placeID)  {
 
        String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();

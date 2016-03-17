@@ -3,20 +3,17 @@ package android.connecthings.notifywagon.push;
 
 import android.app.Fragment;
 import android.connecthings.notifywagon.R;
-import android.connecthings.notifywagon.utils.NotifyWagonSharedPreference;
+import android.connecthings.notifywagon.utils.NwSharedPreference;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -43,13 +40,15 @@ public class FragmentPushTokenStatus extends Fragment{
         registrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (NotifyWagonSharedPreference.getInstance().getTokenRegistrationStatus()) {
+                if (NwSharedPreference.getInstance().getTokenRegistrationStatus()) {
                     tvPushTokenStatus.setText(getString(R.string.push_status_register));
                 } else {
                     tvPushTokenStatus.setText(getString(R.string.push_status_register));
                 }
             }
         };
+
+        register();
 
     }
 

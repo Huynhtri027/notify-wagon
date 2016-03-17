@@ -2,7 +2,7 @@
 var rootPath = "/api/user";
 var _ = require("lodash");
 var Boom = require("boom");
-
+var log = require("../utils/log")();
 var servicePlacesold = require("../services/places_old");
 var servicePlaces = require("../services/places");
 var serviceUsers = require("../services/users");
@@ -18,12 +18,15 @@ module.exports = [
     },
     {
       method: 'POST',
-      path: rootPath + '',
+      path: rootPath,
       handler: function (request, reply) {
+        console.log("request.payload ", request.payload);
         serviceUsers.save(request.payload, function(error, user){
           if(error){
+              console.log("error ", error);
             return reply(Boom.wrap(error, 406));
           }
+          console.log("user ", user);
           return reply(user);
         });
       }
@@ -56,8 +59,12 @@ module.exports = [
       method: ['GET'],
       path: rootPath + '/{user}/updatePlace/{exitPlace}/{enterPlace}',
       handler: function (request, reply) {
+        console.log(">>>> enterPlace");
+        //strange error when calling again the url with same enterPlace
+        //hard to say it's the application or the backend don't see strange log
         var data = request.params;
         var response = {};
+        log.d("updatePlace: ", data);
         if(data.exitPlace !== "none"){
           response.userExit = _.cloneDeep(data);
           response.userExit.status = servicePlaces.userExits(data.user, data.exitPlace);
@@ -67,6 +74,7 @@ module.exports = [
           response.userEnter.status = servicePlaces.userEnters(data.user, data.enterPlace);
           serviceMobileBox.buildMobileBox(data.user, data.enterPlace,function(error, box){
             if(error){
+              console.log(">>> error box", error);
               return reply(Boom.wrap(error, 400));
             }
             response.box = box;

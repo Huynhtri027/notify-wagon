@@ -16,4 +16,14 @@ public class NwUrlUser extends NwUrl {
         enterPlaceId = TextUtils.isEmpty(enterPlaceId)?PARAMETERS.NONE:enterPlaceId;
         return addPath(PATH.API_USER).addPath(pseudo).addPath(PATH.UPDATE_PLACE).addPath(exitPlaceId).addPath(enterPlaceId);
     }
+
+    public Url saveUser(){
+        return addPath("api/user");
+    }
+
+
+    public Url updateUser(String phoneId){
+        return addPath("api/user").addPath(phoneId);
+    }
+
 }

@@ -7,17 +7,31 @@
     <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
     <string name="title_activity_login">LoginActivity</string>
 
+
     <string name="tv_metro_ligne">  Metro ligne:</string>
     <string name="tv_metro_direction">  direction: </string>
     <string name="tv_metro_vitesse">  vitesse: </string>
     <string name="tv_metro_voiture">  voitre: </string>
 
-    <string name="tv_alert_title"> Alerte</string>
+    <string name="tv_alert_title">Alerte</string>
     <string name="tv_alert_information"> Retrouver ici les dernières alertes sur vos lignes</string>
-    <string name="tv_alert_Amis">  Amis</string>
+    <string name="tv_alert_Amis"> Amis</string>
     <string name="tv_alert_Amis_information">  Retrouver ici les dernières alertes sur vos déplacements </string>
     <string name="tv_alert_Message">  Message</string>
     <string name="tv_alert_Message_information">  Retrouver ici les derniers messages de vos amis </string>
+
+
+    <string name="pseudo"> pseudo</string>
+
+    <string name="beacon_notif_title">%1$s, ligne: %2$s, direction: %3$s</string>
+    <string name="friend_messages">%d message(s) d\'ami(s)</string>
+    <string name="other_messages">%d autres message(s)</string>
+    <string name="friends_in_train">%d ami(s) dans le trains</string>
+
+    <string name="dialog_msg_title">Votre Message</string>
+
+    <string name="btn_send">Envoyer</string>
+    <string name="btn_cancel">cancel</string>
 
 
 </resources>

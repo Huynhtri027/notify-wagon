@@ -12,12 +12,15 @@ import android.connecthings.notifywagon.model.EnterExitBox;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.notifywagon.utils.NotificationUtils;
+import android.connecthings.notifywagon.utils.NwSharedPreference;
 import android.connecthings.util.Log;
+import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
@@ -46,18 +49,18 @@ public class BeaconExitEnterCentralizer {
 
     private OnEnterPlace onEnterPlace;
 
-    private NotificationManager notificationManager;
-    private Context applicationContext;
+    private BeaconNotificationManager beaconNotificationManager;
 
     ConnectionManagerServices connectionManagerServices;
 
     private Gson gson;
 
+    private String pseudo;
+
     private BeaconExitEnterCentralizer(Context context){
         beaconContentHistory = new ArrayList<>();
-        applicationContext = context.getApplicationContext();
-        notificationManager = (NotificationManager) applicationContext.getSystemService(context.NOTIFICATION_SERVICE);
         connectionManagerServices = ConnectionManagerServices.getInstance();
+        beaconNotificationManager = new BeaconNotificationManager(context);
         gson = new Gson();
     }
 
@@ -76,6 +79,9 @@ public class BeaconExitEnterCentralizer {
 
     public void registerOnEnterPlace(OnEnterPlace onEnterPlace){
         this.onEnterPlace = onEnterPlace;
+        if(currentNwBeacon!=null){
+           //this.onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
+        }
     }
 
     public void unregisterOnEnterPlace(){
@@ -99,10 +105,13 @@ public class BeaconExitEnterCentralizer {
 
 
     private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
+        if(TextUtils.isEmpty(pseudo)){
+            pseudo = NwSharedPreference.getInstance().getPseudo();
+        }
         String idPreviousBeaconContent = previousBeaconContent==null?null:previousBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         String idCurrentBeaconContent = currentBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         Log.d(TAG, "notify backend about exit enter ", idPreviousBeaconContent, idCurrentBeaconContent);
-        connectionManagerServices.updatePlaceStatus("toto", "theo-wa1", "theo-wa2", new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
+        connectionManagerServices.updatePlaceStatus(pseudo, idPreviousBeaconContent, idCurrentBeaconContent, new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 onBackendError(currentBeaconContent);
@@ -116,11 +125,12 @@ public class BeaconExitEnterCentralizer {
     }
 
     private void onBackendSuccess(final BeaconContent currentBeaconContent, Box box){
+
         previousNwBeacon = currentNwBeacon;
         currentNwBeacon = new NwBeacon(currentBeaconContent, box);
 
         if(onEnterPlace == null){
-            createNotification(previousNwBeacon, currentNwBeacon);
+            beaconNotificationManager.createNotification(previousNwBeacon, currentNwBeacon);
         }else{
             onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
         }
@@ -132,25 +142,6 @@ public class BeaconExitEnterCentralizer {
         }
     }
 
-    //#TODO: move it in his own class later
-    private void createNotification(NwBeacon previousNwBeacon, NwBeacon currentNwBeacon){
-        Intent notifyIntent = new Intent(Intent.ACTION_MAIN);
-        notifyIntent.setClass(applicationContext, ActivityHome.class);
 
-        PendingIntent intent = PendingIntent.getActivity(applicationContext, 0,
-                notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder(applicationContext);
-        mNotificationBuilder.setContentTitle(currentNwBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
-        mNotificationBuilder.setContentText(new StringBuilder().append(currentNwBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME))
-                .append(" line ").append(currentNwBeacon.getValue(AdtagModel.CATEGORY.LINE, AdtagModel.FIELD.DIRECTION)));
-
-        mNotificationBuilder.setContentIntent(intent)
-                            .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_normal)
-                            .setSound(defaultSoundUri)
-                            .setAutoCancel(true);
-
-        notificationManager.notify(NotificationUtils.BEACON_NOTIFICATION, mNotificationBuilder.getNotification());
-    }
 
 }

@@ -1,5 +1,6 @@
 package android.connecthings.notifywagon;
 
+import android.app.DialogFragment;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
@@ -62,8 +63,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                showDialog(new DialogMessage(),"msg");
             }
         });
 
@@ -76,6 +76,11 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
 
     }
+
+    public void showDialog(DialogFragment fragment, String name){
+        fragment.show(getFragmentManager(), name);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
