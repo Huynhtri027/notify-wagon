@@ -1,9 +1,12 @@
 "use strict";
 var rootPath = "/api/user";
+var _ = require("lodash");
+var Boom = require("boom");
+
 var servicePlacesold = require("../services/places_old");
 var servicePlaces = require("../services/places");
 var serviceUsers = require("../services/users");
-var Boom = require("boom");
+var serviceMobileBox = require('../services/mobileBox');
 
 module.exports = [
     {
@@ -47,6 +50,31 @@ module.exports = [
           }
           reply(users);
         });
+      }
+    },
+    {
+      method: ['GET'],
+      path: rootPath + '/{user}/updatePlace/{exitPlace}/{enterPlace}',
+      handler: function (request, reply) {
+        var data = request.params;
+        var response = {};
+        if(data.exitPlace !== "none"){
+          response.userExit = _.cloneDeep(data);
+          response.userExit.status = servicePlaces.userExits(data.user, data.exitPlace);
+        }
+        if(data.enterPlace !== "none"){
+          response.userEnter = _.cloneDeep(data);
+          response.userEnter.status = servicePlaces.userEnters(data.user, data.enterPlace);
+          serviceMobileBox.buildMobileBox(data.user, data.enterPlace,function(error, box){
+            if(error){
+              return reply(Boom.wrap(error, 400));
+            }
+            response.box = box;
+            reply(response);
+          });
+          return;
+        }
+        reply(response);
       }
     },
     {
