@@ -6,4 +6,6 @@
 
     <string name="tv_place_empty_title">Aucun lieu détecté</string>
     <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="pseudo">  pseudo</string>
 </resources>
