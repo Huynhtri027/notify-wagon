@@ -17,9 +17,23 @@ public class NwBeaconRange implements BeaconRange{
 
 
     private static final String TAG = "NwBeaconRange";
+    private List<BeaconContent> previousBeaconContentList = null;
+    private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
+
+    public NwBeaconRange(){
+        beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
+    }
 
     @Override
     public void didRangeBeaconsInRegion(List<AppleBeacon> beacons, List<BeaconContent> beaconContents, Region region, BeaconContent.INFORMATION_STATUS information_status, FEED_STATUS feed_status) {
         Log.d(TAG, "ranging ", beacons, " beaconContents ", beaconContents);
+        if(previousBeaconContentList != null){
+            beaconContents.removeAll(previousBeaconContentList);
+            //very simple test normally beaconContents size in demo will be only 2
+            if(beaconContents.size() !=0 ){
+                beaconExitEnterCentralizer.onEnter(beaconContents.get(0));
+            }
+        }
+
     }
 }

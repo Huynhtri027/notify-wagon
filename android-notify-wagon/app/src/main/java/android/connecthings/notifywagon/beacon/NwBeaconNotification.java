@@ -14,6 +14,8 @@ public class NwBeaconNotification implements BeaconNotification{
     @Override
     public int createNotification(BeaconContent beaconContent) {
         Log.d(TAG, "gogo notification ", beaconContent);
+        //Hack : the SDK Connecthings is not designed to do this normally
+        BeaconExitEnterCentralizer.getInstance().onEnter(beaconContent);
         return NotificationUtils.BEACON_NOTIFICATION;
     }
 
