@@ -14,4 +14,9 @@
     <string name="other_messages">%d autres message(s)</string>
     <string name="friends_in_train">%d ami(s) dans le trains</string>
 
+    <string name="dialog_msg_title">Votre Message</string>
+
+    <string name="btn_send">Envoyer</string>
+    <string name="btn_cancel">cancel</string>
+
 </resources>
