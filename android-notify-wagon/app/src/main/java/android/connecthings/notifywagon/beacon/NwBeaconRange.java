@@ -3,6 +3,7 @@ package android.connecthings.notifywagon.beacon;
 import android.connecthings.adtag.adtagEnum.FEED_STATUS;
 import android.connecthings.adtag.model.sdk.BeaconContent;
 import android.connecthings.util.Log;
+import android.connecthings.util.adtag.beacon.model.ApplicationState;
 import android.connecthings.util.adtag.beacon.model.BeaconRange;
 import android.connecthings.util.adtag.beacon.parser.AppleBeacon;
 

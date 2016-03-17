@@ -14,8 +14,7 @@ public class NwBeaconNotification implements BeaconNotification{
     @Override
     public int createNotification(BeaconContent beaconContent) {
         Log.d(TAG, "gogo notification ", beaconContent);
-        return -1;
-        //return NotificationUtils.BEACON_NOTIFICATION;
+        return NotificationUtils.BEACON_NOTIFICATION;
     }
 
 }
