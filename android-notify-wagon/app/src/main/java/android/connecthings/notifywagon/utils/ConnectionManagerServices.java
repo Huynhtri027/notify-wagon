@@ -1,8 +1,8 @@
 package android.connecthings.notifywagon.utils;
 
-import android.connecthings.notifywagon.Model.AlertMessage;
-import android.connecthings.notifywagon.Model.Message;
-import android.connecthings.notifywagon.Model.UserNotify;
+import android.connecthings.notifywagon.model.AlertMessage;
+import android.connecthings.notifywagon.model.Message;
+import android.connecthings.notifywagon.model.UserNotify;
 import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -92,4 +92,10 @@ public class ConnectionManagerServices {
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
         client.post(null,url, se, "application/json", responseHandler);
     }
+
+    public void getList(){
+
+    }
+
+
 }
