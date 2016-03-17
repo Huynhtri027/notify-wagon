@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="push_status_register">Application prête à recevoir des push notifications</string>
     <string name="push_status_unregister">Le token n\'est pas sauvegardé.</string>
+
+    <string name="tv_place_empty_title">Aucun lieu détecté</string>
+    <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
 </resources>

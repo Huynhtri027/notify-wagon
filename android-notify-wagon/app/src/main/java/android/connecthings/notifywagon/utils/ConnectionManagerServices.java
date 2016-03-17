@@ -6,6 +6,8 @@ import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
 import android.connecthings.notifywagon.url.UrlNotifyWagon;
 import android.util.Log;
+
+import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -25,8 +27,10 @@ public class ConnectionManagerServices {
 
     private static AsyncHttpClient client = new AsyncHttpClient();
     private static AsyncHttpResponseHandler responseHandler;
+    private Gson gson;
 
     public ConnectionManagerServices() {
+        gson = new Gson();
         responseHandler  = new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -64,7 +68,7 @@ public class ConnectionManagerServices {
             jsonParams.put("phoneId",userNotify.getPhoneId());
             jsonParams.put("pseudo",userNotify.getPseudo());
             jsonParams.put("pushToken",userNotify.getTokenId());
-            se = new StringEntity(jsonParams.toString());
+            se = new StringEntity(gson.toJson(userNotify, UserNotify.class));
             Log.d("json",jsonParams.toString()+"");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

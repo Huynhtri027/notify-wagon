@@ -3,6 +3,7 @@ package android.connecthings.notifywagon;
 import android.app.Application;
 import android.connecthings.adtag.AdtagInitializer;
 import android.connecthings.adtag.analytics.AdtagLogsManager;
+import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconNotification;
 import android.connecthings.notifywagon.utils.NotifyWagonSharedPreference;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
@@ -28,6 +29,8 @@ public class ApplicationNotifyWagon extends Application{
                 .initUser("notifyWagonSdk", "GDGqldrqVKu7luz2DPyD").initCompany("hackathonalstom");
         AdtagLogsManager.initInstance(this, Network.ALL, 200, 1000 * 60 * 2);
         AdtagBeaconManager beaconManager = AdtagBeaconManager.initInstance(this, UUID);
+        beaconManager.setBackgroundScanPeriod(0, 30 * 1000);
+        BeaconExitEnterCentralizer.initInstance(this);
         beaconManager.saveBleAccessAuthorize(true);
         beaconManager.updateBeaconNotification(new NwBeaconNotification());
     }
