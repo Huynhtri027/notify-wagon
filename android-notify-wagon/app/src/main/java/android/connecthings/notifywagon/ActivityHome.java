@@ -5,14 +5,17 @@ import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.utils.Adapter_Alert;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.Log;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
+import android.content.Context;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -41,9 +44,12 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
     private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
-
     private TextView placeName = null;
-
+    Context context;
+    String[] messages;
+    Adapter_Alert adpter_alert_message, adpter_friends, adpter_message;
+    ViewPager view_Alert_place;
+    ConnectionManagerServices connectionManagerServices;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +66,15 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
                         .setAction("Action", null).show();
             }
         });
+
         adtagBeaconManager = AdtagBeaconManager.getInstance();
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
-        placeName = (TextView) findViewById(R.id.tv_place);
- 
+        view_Alert_place = (ViewPager) findViewById(R.id.viewpager1);
+       // placeName = (TextView) findViewById(R.id.tv_place);
+
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,11 +114,12 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     }
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
-        placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
+     //   placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
         Log.d(TAG, "success friends: ", currentBeacon.getBox().getFriends());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
-
+        adpter_alert_message = new Adapter_Alert(currentBeacon.getBox().getMessagePlace());
+        view_Alert_place.setAdapter(adpter_alert_message);
     }
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){

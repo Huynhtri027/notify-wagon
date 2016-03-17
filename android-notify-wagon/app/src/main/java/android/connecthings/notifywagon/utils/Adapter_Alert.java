@@ -1,37 +1,36 @@
 package android.connecthings.notifywagon.utils;
 
 import android.connecthings.notifywagon.R;
+import android.connecthings.notifywagon.model.Message;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by ssr on 17/03/16.
  */
 public  class Adapter_Alert extends PagerAdapter {
-    String[] desc;
-    int[] image;
-
+    List<Message> messages ;
     @Override
     public boolean isViewFromObject(View collection, Object object) {
 
         return collection == ((View) object);
     }
-    public Adapter_Alert(String[] desc, int[] image) {
-
+    public Adapter_Alert(List<Message> messageList) {
         super();
-        this.desc = desc;
-        this.image = image;
-
+        this.messages = messageList;
     }
 
     @Override
     public int getCount() {
-        return desc.length;
+        return messages.size();
     }
 
     @Override
@@ -42,12 +41,19 @@ public  class Adapter_Alert extends PagerAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // Setting view you want to display as a row element
         View view = inflater.inflate(R.layout.layout_alert_message, null);
-        TextView itemText = (TextView) view.findViewById(R.id.textViewMain);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageViewmain);
+        TextView message_txt = (TextView) view.findViewById(R.id.tv_textMessageAlert);
+        TextView ligne_txt = (TextView) view.findViewById(R.id.tv_ligneNumber);
 
         try {
-            itemText.setText(desc[position]);
-            imageView.setImageResource(image[position]);
+            Message messageObject = messages.get(position);
+            Log.d("Adapter",(messageObject.getMessage()+""));
+            Log.d("Adapter",(position+""));
+            Log.d("Adapter", messages.get(position) + "");
+            String messageText = messageObject.getMessage() ;
+            message_txt.setText(messageText);
+            ligne_txt.setText("Ligne : 1");
+
+           // imageView.setImageResource(image[position]);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

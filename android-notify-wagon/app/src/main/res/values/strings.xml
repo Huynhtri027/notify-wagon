@@ -3,9 +3,21 @@
     <string name="action_settings">Settings</string>
     <string name="push_status_register">Application prête à recevoir des push notifications</string>
     <string name="push_status_unregister">Le token n\'est pas sauvegardé.</string>
-
     <string name="tv_place_empty_title">Aucun lieu détecté</string>
     <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="pseudo">  pseudo</string>
+
+    <string name="tv_metro_ligne">  Metro ligne:</string>
+    <string name="tv_metro_direction">  direction: </string>
+    <string name="tv_metro_vitesse">  vitesse: </string>
+    <string name="tv_metro_voiture">  voitre: </string>
+
+    <string name="tv_alert_title"> Alerte</string>
+    <string name="tv_alert_information"> Retrouver ici les dernières alertes sur vos lignes</string>
+    <string name="tv_alert_Amis">  Amis</string>
+    <string name="tv_alert_Amis_information">  Retrouver ici les dernières alertes sur vos déplacements </string>
+    <string name="tv_alert_Message">  Message</string>
+    <string name="tv_alert_Message_information">  Retrouver ici les derniers messages de vos amis </string>
+
+
 </resources>
