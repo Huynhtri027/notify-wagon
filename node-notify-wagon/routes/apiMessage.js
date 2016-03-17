@@ -76,13 +76,13 @@ module.exports = [
         path: rootPath + '/box/{user}/{itemId}',
         config: {
           handler: function(request, reply) {
-            serviceMobileBox.buildMobileBox(request.params.user, request.params.itemId,function(error, response){
+            /*serviceMobileBox.buildMobileBox(request.params.user, request.params.itemId,function(error, response){
               if(error){
                 return reply(Boom.wrap(error, 400));
               }
               reply(response);
-            });
-            ///reply(mobileMessages);
+            });*/
+            reply(mobileMessages);
           }
         }
       }
