@@ -12,12 +12,15 @@ import android.connecthings.notifywagon.model.EnterExitBox;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.notifywagon.utils.NotificationUtils;
+import android.connecthings.notifywagon.utils.NwSharedPreference;
 import android.connecthings.util.Log;
+import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
@@ -52,6 +55,8 @@ public class BeaconExitEnterCentralizer {
     ConnectionManagerServices connectionManagerServices;
 
     private Gson gson;
+
+    private String pseudo;
 
     private BeaconExitEnterCentralizer(Context context){
         beaconContentHistory = new ArrayList<>();
@@ -99,10 +104,13 @@ public class BeaconExitEnterCentralizer {
 
 
     private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
+        if(TextUtils.isEmpty(pseudo)){
+            pseudo = NwSharedPreference.getInstance().getPseudo();
+        }
         String idPreviousBeaconContent = previousBeaconContent==null?null:previousBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         String idCurrentBeaconContent = currentBeaconContent==null?null:currentBeaconContent.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID);
         Log.d(TAG, "notify backend about exit enter ", idPreviousBeaconContent, idCurrentBeaconContent);
-        connectionManagerServices.updatePlaceStatus("toto", idPreviousBeaconContent, idCurrentBeaconContent, new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
+        connectionManagerServices.updatePlaceStatus(pseudo, idPreviousBeaconContent, idCurrentBeaconContent, new GsonResponseHandler<EnterExitBox>(EnterExitBox.class) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 onBackendError(currentBeaconContent);

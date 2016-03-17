@@ -26,8 +26,8 @@ module.exports.get = function(callback){
   db.find({}, callback);
 }
 
-module.exports.extractTokens = function(phoneIds, callback){
-  db.find({phoneId:{$in : phoneIds}},{pushToken:1}, function(error, results){
+module.exports.extractTokens = function(pseudos, callback){
+  db.find({pseudo:{$in : pseudos}},{pushToken:1}, function(error, results){
     if(error){
       return callback(error);
     }

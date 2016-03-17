@@ -18,12 +18,15 @@ module.exports = [
     },
     {
       method: 'POST',
-      path: rootPath + '',
+      path: rootPath,
       handler: function (request, reply) {
+        console.log("request.payload ", request.payload);
         serviceUsers.save(request.payload, function(error, user){
           if(error){
+              console.log("error ", error);
             return reply(Boom.wrap(error, 406));
           }
+          console.log("user ", user);
           return reply(user);
         });
       }

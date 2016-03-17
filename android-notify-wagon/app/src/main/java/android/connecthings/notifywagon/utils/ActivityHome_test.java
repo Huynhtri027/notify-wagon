@@ -110,5 +110,10 @@ public class ActivityHome_test extends AppCompatActivity  implements OnEnterPlac
         placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
     }
 
+    @Override
+    public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon) {
+
+    }
+
 
 }

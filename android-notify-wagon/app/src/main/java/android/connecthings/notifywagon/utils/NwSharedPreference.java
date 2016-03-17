@@ -6,27 +6,27 @@ import android.preference.PreferenceManager;
 
 /**
  */
-public class NotifyWagonSharedPreference {
+public class NwSharedPreference {
 
-    private static NotifyWagonSharedPreference INSTANCE;
+    private static NwSharedPreference INSTANCE;
     private static final String TOKEN_REGISTRATION_STATUS="android.connecthings.tokenRegistrationStatus";
     private static final String PSEUDO="com.connecthings.pseudo";
 
     SharedPreferences sharedPreferences;
 
-    private NotifyWagonSharedPreference(Context context){
+    private NwSharedPreference(Context context){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
     }
 
     public static void init(Context context){
         if(INSTANCE == null){
-            INSTANCE = new NotifyWagonSharedPreference(context);
+            INSTANCE = new NwSharedPreference(context);
         }
     }
 
-    public static NotifyWagonSharedPreference getInstance(){
+    public static NwSharedPreference getInstance(){
         if(INSTANCE == null){
-            throw new IllegalAccessError("NotifyWagonSharedPreference must be initialized using the init method in your Application class");
+            throw new IllegalAccessError("NwSharedPreference must be initialized using the init method in your Application class");
         }
         return INSTANCE;
     }

@@ -3,16 +3,22 @@ package android.connecthings.notifywagon.push;
 import android.app.IntentService;
 
 import android.connecthings.notifywagon.R;
-import android.connecthings.notifywagon.utils.NotifyWagonSharedPreference;
+import android.connecthings.notifywagon.model.UserNotify;
+import android.connecthings.notifywagon.utils.ConnectionManagerServices;
+import android.connecthings.notifywagon.utils.NwSharedPreference;
+import android.connecthings.util.Log;
+import android.connecthings.util.Utils;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
+import com.loopj.android.http.TextHttpResponseHandler;
 
 import java.io.IOException;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class RegistrationIntentService extends IntentService {
@@ -21,13 +27,16 @@ public class RegistrationIntentService extends IntentService {
     private static final String[] TOPICS = {"global"};
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
 
+    private NwSharedPreference sharedPreference=null;
+
     public RegistrationIntentService() {
         super(TAG);
+        sharedPreference = NwSharedPreference.getInstance();
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        NotifyWagonSharedPreference sharedPreference = NotifyWagonSharedPreference.getInstance();
+        NwSharedPreference sharedPreference = NwSharedPreference.getInstance();
 
         try {
             // [START register_for_gcm]
@@ -51,15 +60,20 @@ public class RegistrationIntentService extends IntentService {
             // You should store a boolean that indicates whether the generated token has been
             // sent to your server. If the boolean is false, send the token to your server,
             // otherwise your server should have already received the token.
-            sharedPreference.saveTokenRegistrationStatus(true);
+
             // [END register_for_gcm]
         } catch (Exception e) {
             Log.d(TAG, "Failed to complete token refresh", e);
             // If an exception happens while fetching the new token or updating our registration data
             // on a third-party server, this ensures that we'll attempt the update at a later time.
-            sharedPreference.saveTokenRegistrationStatus(false);
+            pushNotificationProcessComplete(false);
         }
+
+    }
+
+    public void pushNotificationProcessComplete(boolean status){
         // Notify UI that registration has completed, so the progress indicator can be hidden.
+        sharedPreference.saveTokenRegistrationStatus(status);
         Intent registrationComplete = new Intent(REGISTRATION_COMPLETE);
         LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
     }
@@ -74,6 +88,38 @@ public class RegistrationIntentService extends IntentService {
      */
     private void sendRegistrationToServer(String token) {
         // Add custom implementation, as needed.
+        if(sharedPreference.getTokenRegistrationStatus()){
+            ConnectionManagerServices.getInstance().updateUser(token, Utils.getDeviceId(getApplicationContext()), new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    Log.d(TAG, "error statusCode ", statusCode, " response ", responseString);
+                    sharedPreference.saveTokenRegistrationStatus(false);
+                    pushNotificationProcessComplete(false);
+                }
+
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    Log.d(TAG, "sucess statusCode ", statusCode, " response ", responseString);
+                    pushNotificationProcessComplete(true);
+                }
+            });
+        }else {
+            UserNotify userNotify = new UserNotify(Utils.getDeviceId(this), sharedPreference.getPseudo(), token);
+            ConnectionManagerServices.getInstance().saveUser(userNotify, new TextHttpResponseHandler() {
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    Log.d(TAG, "error statusCode ", statusCode, " response ", responseString);
+                    pushNotificationProcessComplete(false);
+                }
+
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    Log.d(TAG, "sucess statusCode ", statusCode, " response ", responseString);
+                    pushNotificationProcessComplete(true);
+                }
+            });
+
+        }
 
     }
 

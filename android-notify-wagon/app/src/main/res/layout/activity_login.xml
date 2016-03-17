@@ -19,7 +19,7 @@
         android:src="@drawable/logo_login" />
 
     <EditText
-        android:id="@+id/pseudoTxt"
+        android:id="@+id/etPseudo"
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
@@ -38,7 +38,7 @@
 <Button
     android:layout_width="300dp"
     android:layout_height="30dp"
-    android:layout_below="@id/pseudoTxt"
+    android:layout_below="@id/etPseudo"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:text="connexion"
@@ -46,7 +46,7 @@
     android:background="@color/colorPlace"
     android:textColor="?attr/colorButtonNormal"
     android:textSize="13dp"
-    android:id="@+id/connectbtn"
+    android:id="@+id/btnConnect"
     />
     
 
