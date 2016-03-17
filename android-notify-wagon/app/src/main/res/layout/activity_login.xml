@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorPrimary"
+
+    tools:context="android.connecthings.notifywagon.LoginActivity">
+    <include layout="@layout/content_login" />
+
+    <ImageView
+        android:layout_marginTop="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_login" />
+
+    <EditText
+        android:id="@+id/pseudoTxt"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:background="?attr/colorButtonNormal"
+        android:hint="  pseudo"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/pseudo_login"
+        android:drawablePadding="10dip"
+        android:paddingLeft="10dip"
+        android:textColor="@color/text"
+        android:textSize="13dp"
+     />
+
+<Button
+    android:layout_width="300dp"
+    android:layout_height="30dp"
+    android:layout_below="@id/pseudoTxt"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:text="connexion"
+    android:gravity="center"
+    android:background="@color/colorPlace"
+    android:textColor="?attr/colorButtonNormal"
+    android:textSize="13dp"
+    android:id="@+id/connectbtn"
+    />
+    
+
+</RelativeLayout>
