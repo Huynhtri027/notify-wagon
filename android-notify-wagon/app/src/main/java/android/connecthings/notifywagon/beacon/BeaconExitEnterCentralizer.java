@@ -49,8 +49,7 @@ public class BeaconExitEnterCentralizer {
 
     private OnEnterPlace onEnterPlace;
 
-    private NotificationManager notificationManager;
-    private Context applicationContext;
+    private BeaconNotificationManager beaconNotificationManager;
 
     ConnectionManagerServices connectionManagerServices;
 
@@ -60,9 +59,8 @@ public class BeaconExitEnterCentralizer {
 
     private BeaconExitEnterCentralizer(Context context){
         beaconContentHistory = new ArrayList<>();
-        applicationContext = context.getApplicationContext();
-        notificationManager = (NotificationManager) applicationContext.getSystemService(context.NOTIFICATION_SERVICE);
         connectionManagerServices = ConnectionManagerServices.getInstance();
+        beaconNotificationManager = new BeaconNotificationManager(context);
         gson = new Gson();
     }
 
@@ -128,7 +126,7 @@ public class BeaconExitEnterCentralizer {
         currentNwBeacon = new NwBeacon(currentBeaconContent, box);
 
         if(onEnterPlace == null){
-            createNotification(previousNwBeacon, currentNwBeacon);
+            beaconNotificationManager.createNotification(previousNwBeacon, currentNwBeacon);
         }else{
             onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
         }
@@ -140,25 +138,6 @@ public class BeaconExitEnterCentralizer {
         }
     }
 
-    //#TODO: move it in his own class later
-    private void createNotification(NwBeacon previousNwBeacon, NwBeacon currentNwBeacon){
-        Intent notifyIntent = new Intent(Intent.ACTION_MAIN);
-        notifyIntent.setClass(applicationContext, ActivityHome.class);
 
-        PendingIntent intent = PendingIntent.getActivity(applicationContext, 0,
-                notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder(applicationContext);
-        mNotificationBuilder.setContentTitle(currentNwBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
-        mNotificationBuilder.setContentText(new StringBuilder().append(currentNwBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME))
-                .append(" line ").append(currentNwBeacon.getValue(AdtagModel.CATEGORY.LINE, AdtagModel.FIELD.DIRECTION)));
-
-        mNotificationBuilder.setContentIntent(intent)
-                            .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_normal)
-                            .setSound(defaultSoundUri)
-                            .setAutoCancel(true);
-
-        notificationManager.notify(NotificationUtils.BEACON_NOTIFICATION, mNotificationBuilder.getNotification());
-    }
 
 }
