@@ -32,8 +32,8 @@ public class NwBeacon {
         return box.getMessagePlace();
     }
 
-    public ArrayList<Wagon> getFriends() {
-        return box.getFriends();
+    public WagonBox getWagonBox() {
+        return box.getWagonBox();
     }
 
     public ArrayList<Message> getMessageFriends() {

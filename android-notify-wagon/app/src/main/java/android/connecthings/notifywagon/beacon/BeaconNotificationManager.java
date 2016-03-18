@@ -40,7 +40,7 @@ public class BeaconNotificationManager {
         mNotificationBuilder.setContentText(generateDesc(previousNwBeacon, currentNwBeacon));
 
         mNotificationBuilder.setContentIntent(intent)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_normal)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setSound(defaultSoundUri)
                 .setAutoCancel(true);
 
@@ -62,12 +62,12 @@ public class BeaconNotificationManager {
             sb.append(message.getType()).append(" : ").append(message.getMessage());
             isFirst = false;
         }
-        if(currentNwBeacon.getFriends().size()>0){
+        if(currentNwBeacon.getWagonBox().getWagons().size()>0){
             if(isFirst) {
                 sb.append(",\n");
             }
             int countWagon = 0;
-            for(Wagon wagon : currentNwBeacon.getFriends()){
+            for(Wagon wagon : currentNwBeacon.getWagonBox().getWagons()){
                 countWagon += wagon.getUsers().size();
             }
 

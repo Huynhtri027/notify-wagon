@@ -125,19 +125,20 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
      //  placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
-        Log.d(TAG, "success friends: ", currentBeacon.getBox().getFriends());
+        Log.d(TAG, "success friends: ", currentBeacon.getBox().getWagonBox());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
         this.refreshUpdater(currentBeacon);
 
 // check for notification count
         if (currentBeacon.getBox().getMessagePlace().size()>0){
-            notifAlert.setText(currentBeacon.getBox().getMessagePlace().size() + 1 + "");
+            notifAlert.setText(currentBeacon.getBox().getMessagePlace().size()   + "");
         }
-        notiffWagon.setText(currentBeacon.getBox().getWagonBox().getCount());
+
+        notiffWagon.setText(currentBeacon.getBox().getWagonBox().getCount() + "");
 
         if (currentBeacon.getBox().getMessageFriends().size()>0){
-            notifMessage.setText(currentBeacon.getBox().getMessageFriends().size() +1 +"");
+            notifMessage.setText(currentBeacon.getBox().getMessageFriends().size()  +"");
         }
         if (currentBeacon!=null){
             this.setInformationToFirstBox(currentBeacon);

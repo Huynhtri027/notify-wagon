@@ -1,9 +1,9 @@
 {"message":"J'ai oubli� mon sac bleu ciel","places":["theo-wa1"],"sender":"sarra","type":"lost","_id":"2M5n0khDkXhCG8us"}
+{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"5GpCUJ25LUjSh0Se"}
+{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"8RB4E7ZXNZFRzwFC"}
 {"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"sarra","type":"pickpocket","_id":"ANc9vPE1wVHOoAlg"}
+{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"Nc9ZVc2YaSqhcnsa"}
+{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"P4nR6g3FypbXvQ7o"}
 {"message":"Ne manquez ma soirée OhOhOh","type":"social","sender":"jean-no","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"mqFRc3yCg0b0dOdX"}
 {"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"sarra","type":"pickpocket","_id":"q3VYbj0qvjAcXAcR"}
 {"message":"La climatisation de fonctionne pas dans la train","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"ySuho33DauYFfagA"}
-{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"Nc9ZVc2YaSqhcnsa"}
-{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"8RB4E7ZXNZFRzwFC"}
-{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"P4nR6g3FypbXvQ7o"}
-{"message":"Une personne est malade. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"ill","_id":"5GpCUJ25LUjSh0Se"}

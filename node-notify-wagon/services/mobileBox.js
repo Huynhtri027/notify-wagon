@@ -5,7 +5,7 @@ var servicePlaces = require('../services/places');
 
 module.exports.buildMobileBox = function(user, itemId, callback){
    var answer = {};
-   answer.friends = servicePlaces.friendsInPlace(user, itemId);
+   answer.wagonBox = servicePlaces.friendsInPlace(user, itemId);
    serviceMessages.msgInBoxForPlace(itemId, function(error, msgForPlace){
      if(error){
        return callback(error);
