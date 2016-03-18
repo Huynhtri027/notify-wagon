@@ -27,14 +27,20 @@ var initUsersInItem = function(itemId){
   return item;
 }
 
-var addNbUsers = function(place){
-  var count = 0;
-  _.each(place.items, (item)=>{
-    if(item.users){
-      count = count + item.users.length;
-    }
-  })
-  place.nbUsers = count;
+var addNbUsers = function(places){
+
+
+  _.each(places, (place)=>{
+      var count = 0;
+    _.each(place.items, (item)=>{
+      if(item.users){
+        count = count + item.users.length;
+      }
+
+    })
+    place.nbUsers = count;
+  });
+
 }
 
 module.exports.find = function(itemId){
@@ -114,10 +120,14 @@ module.exports.friendsInPlace = function(pseudo, itemId){
   return {count: count, wagons: placesWithUsers};
 }
 
+module.exports.find = function(type, id){
+  return _.find(places, {type:type, id:id});
+}
+
 module.exports.dataForWebSiteHome = function(){
   var answers = {};
-  answers.stations = _find(places, {type:"stations"});
-  answers.trains = _find(places, {type:"trains"});
+  answers.stations = _.filter(places, {type:"station"});
+  answers.trains = _.filter(places, {type:"train"});
   addNbUsers(answers.stations);
   addNbUsers(answers.trains);
   return answers;

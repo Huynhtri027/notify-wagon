@@ -9,7 +9,14 @@ import java.util.List;
  */
 public class Message {
 
-    public static enum TYPE{alert, social, clean, lost, agression, ill, pickpocket};
+    public static enum TYPE{alert, social, clean, lost, agression, ill, pickpocket;
+
+        /*private final int stringId;
+
+        TYPE(int stringId) {
+            this.stringId = stringId;
+        }*/
+    };
 
     private String message;
     private String sender;

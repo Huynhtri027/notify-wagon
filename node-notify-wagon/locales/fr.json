@@ -13,5 +13,6 @@
 	"btn.send": "Envoyer",
 	"btn.cancel": "Annuler",
 	"message.success": "message.success",
-	"form.message": "form.message"
+	"form.message": "form.message",
+	"nb.users.train": "Nombre d'usagers dans le train : "
 }
