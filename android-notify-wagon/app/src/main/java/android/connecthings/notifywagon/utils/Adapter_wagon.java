@@ -59,9 +59,10 @@ public class Adapter_wagon extends PagerAdapter {
             List<String> friendWagon = wagonObject.getUsers();
             String user = friendWagon.get(position);
             int nextFriend =  position + 1 ;
-            int wagonposition = wagonObject.getPosition() +1 ;
+            int wagonposition = wagonObject.getPosition()+1 ;
+            Log.d("numerroooooo ",wagonObject.getPosition()+"");
             user_txt.setText(user);
-            voiture_number.setText("Voiture: "+wagonposition +"");
+            voiture_number.setText("Voiture "+wagonObject.getPosition() +"");
 
             if (friendWagon.get(nextFriend) != null){
                 String second = friendWagon.get(position +1);
