@@ -95,24 +95,11 @@
                 android:background="#FFFFFF"
                 android:layout_marginLeft="25dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_alertTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_alert_title"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_textInformationAlert"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_alert_information"
-                    android:textSize="12dp" />
+
                 <android.support.v4.view.ViewPager
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="140dp"
                     android:id="@+id/viewpager1"
                     android:background="#FFFFFFFF" />
             </LinearLayout>
@@ -141,27 +128,15 @@
                 android:background="#FFFFFF"
                 android:layout_marginLeft="25dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_friendTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_alert_Amis"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_textInformationFriends"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_alert_Amis_information"
-                    android:textSize="12dp" />
+
                 <android.support.v4.view.ViewPager
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="140dp"
                     android:id="@+id/viewpager2"
-                    android:background="#333333" />
+                    android:background="#FFFFFFFF"/>
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -183,32 +158,16 @@
                 android:background="#FFFFFF"
                 android:layout_marginLeft="30dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_messageTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text"
-                    android:text="@string/tv_alert_Message"
-                    android:textSize="20dp" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/tv_textInformationMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_alert_Message_information"
-                    android:textSize="12dp" />
-                <android.support.v4.view.ViewPager
-                    android:layout_marginTop="10dp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="150dp"
-                    android:id="@+id/viewpager3"
-                    android:background="#333333" />
 
+                <android.support.v4.view.ViewPager
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/viewpager3"
+                    android:background="#FFFFFFFF"  />
             </LinearLayout>
 
         </LinearLayout>
-
 
 
     </LinearLayout>

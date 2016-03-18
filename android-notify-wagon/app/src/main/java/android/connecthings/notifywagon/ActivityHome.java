@@ -4,18 +4,17 @@ import android.app.DialogFragment;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
-import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.utils.AdapterFriends;
 import android.connecthings.notifywagon.utils.Adapter_Alert;
+import android.connecthings.notifywagon.utils.Adapter_wagon;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.Log;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,20 +22,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.entity.StringEntity;
-import cz.msebera.android.httpclient.message.BasicHeader;
-import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
@@ -48,8 +33,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private TextView placeName = null;
     Context context;
     String[] messages;
-    Adapter_Alert adpter_alert_message, adpter_friends, adpter_message;
-    ViewPager view_Alert_place;
+    Adapter_Alert adpter_alert_message;
+    AdapterFriends adpter_message;
+    Adapter_wagon adapter_voiture;
+    ViewPager view_Alert_place,view_Alert_voiture,view_alert_message_friends;
     ConnectionManagerServices connectionManagerServices;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +58,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         nwBeaconRange = new NwBeaconRange();
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
         view_Alert_place = (ViewPager) findViewById(R.id.viewpager1);
+        view_Alert_voiture = (ViewPager) findViewById(R.id.viewpager2);
        // placeName = (TextView) findViewById(R.id.tv_place);
-
+        view_alert_message_friends = (ViewPager)findViewById(R.id.viewpager3);
 
 
     }
@@ -119,12 +107,18 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     }
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
-     //   placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
+     //  placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
         Log.d(TAG, "success friends: ", currentBeacon.getBox().getFriends());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
         adpter_alert_message = new Adapter_Alert(currentBeacon.getBox().getMessagePlace());
         view_Alert_place.setAdapter(adpter_alert_message);
+
+        adapter_voiture = new Adapter_wagon(currentBeacon.getBox().getFriends());
+        view_Alert_voiture.setAdapter(adapter_voiture);
+
+        adpter_message = new AdapterFriends(currentBeacon.getBox().getMessageFriends());
+        view_alert_message_friends.setAdapter(adpter_message);
     }
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){
