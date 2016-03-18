@@ -27,6 +27,16 @@ var initUsersInItem = function(itemId){
   return item;
 }
 
+function addNbUsers = function(place){
+  var count = 0;
+  _.each(place.items, (item)=>{
+    if(item.users){
+      count = count + item.users.length;
+    }
+  })
+  place.nbUsers = count;
+}
+
 module.exports.find = function(itemId){
   return searchItem(itemId);
 }
@@ -89,4 +99,13 @@ module.exports.friendsInPlace = function(pseudo, itemId){
     });
   }
   return placesWithUsers;
+}
+
+module.exports.dataForWebSiteHome = function(){
+  var answers = {};
+  answers.stations = _find(places, {type:"stations"});
+  answers.trains = _find(places, {type:"trains"});
+  addNbUsers(answers.stations);
+  addNbUsers(answers.trains);
+  return answers;
 }
