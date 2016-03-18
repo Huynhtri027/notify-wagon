@@ -51,10 +51,10 @@ public class DialogMessageType extends DialogFragment implements DialogInterface
         dismiss();
     }
 
-    public void sendMessage(String msg){
+    public void sendMessage(String msg, Message.TYPE type){
         Message message = new Message(msg,
                 NwSharedPreference.getInstance().getPseudo(),
-                Message.TYPE.pickpocket,
+                type,
                 BeaconExitEnterCentralizer.getInstance().getCurrentBeaconContent().getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.ID));
         tvStatus.setText(R.string.msg_sent_in_progress);
         tvStatus.setVisibility(View.VISIBLE);
@@ -78,16 +78,16 @@ public class DialogMessageType extends DialogFragment implements DialogInterface
         int id = v.getId();
         switch (id){
             case R.id.tv_msg_agression:
-                sendMessage(getString(R.string.msg_agression));
+                sendMessage(getString(R.string.msg_agression), Message.TYPE.agression);
                 break;
             case R.id.tv_msg_pickpocket:
-                sendMessage(getString(R.string.msg_pickpoket));
+                sendMessage(getString(R.string.msg_pickpoket),  Message.TYPE.pickpocket);
                 break;
             case R.id.tv_msg_lost:
-                sendMessage(getString(R.string.msg_lost));
+                sendMessage(getString(R.string.msg_lost),  Message.TYPE.lost);
                 break;
             case R.id.tv_msg_ill:
-                sendMessage(getString(R.string.msg_ill));
+                sendMessage(getString(R.string.msg_ill),  Message.TYPE.ill);
                 break;
             case R.id.tv_msg_social:
                 break;

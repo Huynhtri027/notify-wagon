@@ -47,6 +47,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setLogo(R.drawable.logo_header);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +127,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){
         Log.d(TAG, "backend error");
+    }
+
+    public void onProgress(){
+
     }
 
 

@@ -10,4 +10,7 @@ public interface OnEnterPlace {
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon);
 
+    public void onProgress();
+
+
 }

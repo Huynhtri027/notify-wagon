@@ -105,6 +105,10 @@ public class BeaconExitEnterCentralizer {
 
 
     private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
+        if(onEnterPlace != null){
+            onEnterPlace.onProgress();
+        }
+
         if(TextUtils.isEmpty(pseudo)){
             pseudo = NwSharedPreference.getInstance().getPseudo();
         }
