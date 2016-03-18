@@ -1,28 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ActivityHome"
-    tools:showIn="@layout/activity_home">
+    android:paddingTop="45dp"
+    android:background="?attr/colorButtonNormal">
 
-    <fragment
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:tag="fragmentPushTokenStatus"
-        android:name="android.connecthings.notifywagon.push.FragmentPushTokenStatus"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/colorPlace"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/train_index" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/tv_gare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chatelet BLBABA"
+                    android:textSize="12dp" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/tv_ligneMetro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_metro_ligne"
+                    android:textSize="10dp" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/tv_direction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_metro_direction"
+                    android:textSize="10dp" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/tv_voiture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_metro_voiture"
+                    android:textSize="10dp" />
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/tv_vitesse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_metro_vitesse"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/tv_place"
-        android:text="@string/tv_place_empty_desc" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorAlert"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/alert_index" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="140dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical">
+
+                <android.support.v4.view.ViewPager
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="140dp"
+                    android:id="@+id/viewpager1"
+                    android:background="#FFFFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
 
 
-</RelativeLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorFriends"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/friends_index" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="140dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical">
+
+                <android.support.v4.view.ViewPager
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="140dp"
+                    android:id="@+id/viewpager2"
+                    android:background="#FFFFFFFF"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorMessage"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/message_index" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:background="#FFFFFF"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
+
+                <android.support.v4.view.ViewPager
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/viewpager3"
+                    android:background="#FFFFFFFF"  />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

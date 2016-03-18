@@ -11,7 +11,6 @@ public class Wagon {
     private int position;
     private List<String> users;
 
-
     public String getId() {
         return id;
     }
