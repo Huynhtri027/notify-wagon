@@ -125,7 +125,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
      //  placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
-        Log.d(TAG, "success friends: ", currentBeacon.getBox().getFriends());
+        Log.d(TAG, "success friends: ", currentBeacon.getBox().getWagonBox());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
         this.refreshUpdater(currentBeacon);
@@ -134,9 +134,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         if (currentBeacon.getBox().getMessagePlace().size()>0){
             notifAlert.setText(currentBeacon.getBox().getMessagePlace().size()   + "");
         }
-        if(currentBeacon.getBox().getFriends().size()>0){
-            notiffWagon.setText(currentBeacon.getBox().getFriends().size()  +"");
-        }
+
+        notiffWagon.setText(currentBeacon.getBox().getWagonBox().getCount() + "");
+
         if (currentBeacon.getBox().getMessageFriends().size()>0){
             notifMessage.setText(currentBeacon.getBox().getMessageFriends().size()  +"");
         }
@@ -152,7 +152,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     public void onProgress() {
 
     }
-    
+
     public void setInformationToFirstBox (NwBeacon currentBeacon){
         String placeName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.NAME);
         String rootName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.ROOT_NAME);
@@ -184,7 +184,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         //update liste from refreshing adapter
         adpter_alert_message.updateListe(currentBeacon.getBox().getMessagePlace());
         adpter_message_friends.updateListe(currentBeacon.getBox().getMessageFriends());
-        adapter_voiture.updateListe(currentBeacon.getBox().getFriends());
+        adapter_voiture.updateListe(currentBeacon.getBox().getWagonBox().getWagons());
         //update updater
         adpter_alert_message.notifyDataSetChanged();
         adpter_message_friends.notifyDataSetChanged();

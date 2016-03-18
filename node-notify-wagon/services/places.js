@@ -27,7 +27,7 @@ var initUsersInItem = function(itemId){
   return item;
 }
 
-function addNbUsers = function(place){
+var addNbUsers = function(place){
   var count = 0;
   _.each(place.items, (item)=>{
     if(item.users){
@@ -85,9 +85,22 @@ module.exports.friendsInPlace = function(pseudo, itemId){
   var place = this.findPlace(itemId);
   var placesWithUsers = [];
   if(place){
+    var count = 0;
     _.forEach(place.items, (item)=>{
       if(item.users && item.users.length !==0){
-        placesWithUsers.push(item);
+        var index = item.users.indexOf(pseudo)
+        if(index ===-1){
+            placesWithUsers.push(item);
+            count = count + item.users.length;
+        }else{
+          item = _.cloneDeep(item);
+          item.users.splice(index, 1);
+          if(item.users.length > 0){
+            placesWithUsers.push(item);
+            count = count + item.users.length;
+          }
+        }
+
         /*_.forEach(item.users, (user)=>{
           if(user !== pseudo){
             var place = _.cloneDeep(item);
@@ -98,7 +111,7 @@ module.exports.friendsInPlace = function(pseudo, itemId){
       }
     });
   }
-  return placesWithUsers;
+  return {count: count, wagons: placesWithUsers};
 }
 
 module.exports.dataForWebSiteHome = function(){

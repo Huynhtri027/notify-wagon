@@ -62,12 +62,12 @@ public class BeaconNotificationManager {
             sb.append(message.getType()).append(" : ").append(message.getMessage());
             isFirst = false;
         }
-        if(currentNwBeacon.getFriends().size()>0){
+        if(currentNwBeacon.getWagonBox().getWagons().size()>0){
             if(isFirst) {
                 sb.append(",\n");
             }
             int countWagon = 0;
-            for(Wagon wagon : currentNwBeacon.getFriends()){
+            for(Wagon wagon : currentNwBeacon.getWagonBox().getWagons()){
                 countWagon += wagon.getUsers().size();
             }
 
