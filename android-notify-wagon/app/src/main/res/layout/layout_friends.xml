@@ -13,24 +13,35 @@
             android:textColor="@color/text"
             android:textSize="20dp"
             android:id="@+id/tv_voiture_information"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold"
+            />
         <TextView
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "
+            android:text=""
             android:textColor="@color/text"
-            android:textSize="15dp"
+            android:textSize="16dp"
             android:id="@+id/tv_user_name"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/pseudo_login"
+            android:layout_gravity="center_vertical"
+            />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/text"
-        android:textSize="15dp"
+        android:textSize="16dp"
         android:id="@+id/tv_second_user_name"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/pseudo_login"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        />
     <TextView
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"

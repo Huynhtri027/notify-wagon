@@ -8,7 +8,7 @@ public class Wagon {
 
     private String id;
     private String name;
-    private int position;
+    private int postion;
     private List<String> users;
 
     public String getId() {
@@ -20,9 +20,8 @@ public class Wagon {
     }
 
     public int getPosition() {
-        return position;
+        return postion;
     }
-
     public List<String> getUsers() {
         return users;
     }
