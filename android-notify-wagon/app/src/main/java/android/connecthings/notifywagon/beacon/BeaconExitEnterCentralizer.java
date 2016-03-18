@@ -80,7 +80,7 @@ public class BeaconExitEnterCentralizer {
     public void registerOnEnterPlace(OnEnterPlace onEnterPlace){
         this.onEnterPlace = onEnterPlace;
         if(currentNwBeacon!=null){
-           //this.onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
+           this.onEnterPlace.onEnterPlace(previousNwBeacon, currentNwBeacon);
         }
     }
 

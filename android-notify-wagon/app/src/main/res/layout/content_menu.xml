@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textColor="@color/title"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+
+
+    <TextView android:id="@+id/tv_msg_pickpocket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_pickpoket"
+        android:padding="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/title"
+        android:textSize="18sp"
+        />
+
+    <TextView android:id="@+id/tv_msg_lost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_pickpoket"
+        android:layout_paddingTop="12dp"
+        android:padding="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/title"
+        android:textSize="18sp"/>
+
+    <TextView android:id="@+id/tv_msg_agression"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_agression"
+        android:padding="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/title"
+        android:textSize="18sp"/>
+
+    <TextView android:id="@+id/tv_msg_social"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_social"
+        android:padding="12dp"
+        android:textAlignment="center"
+        android:textColor="@color/title"
+        android:textSize="18sp"/>
+
+</LinearLayout>

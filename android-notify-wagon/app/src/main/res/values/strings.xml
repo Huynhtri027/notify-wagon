@@ -7,9 +7,9 @@
     <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
     <string name="tv_hint_message">Votre message</string>
 
-    <string name="msg_sent_error">L\'envoi de votre message a rencontré une erreur.\nRéassayer !</string>
-    <string name="msg_sent_success">Votre message a bien été envoyé.</string>
-    <string name="msg_sent_in_progress">Votre message est en cours d\'envoi.</string>
+    <string name="msg_sent_error">L\'envoi de votre message a rencontré une erreur !\nRéassayer !</string>
+    <string name="msg_sent_success">Votre message a bien été envoyé !</string>
+    <string name="msg_sent_in_progress">Votre message est en cours d\'envoi...</string>
 
     <string name="title_activity_login">LoginActivity</string>
 
@@ -38,6 +38,12 @@
 
     <string name="btn_send">Envoyer</string>
     <string name="btn_cancel">cancel</string>
+
+
+    <string name="tv_msg_type_social">A vos amis</string>
+    <string name="tv_msg_type_agression">Une agression est en cours</string>
+    <string name="tv_msg_type_pickpoket">Attention pickpockets</string>
+    <string name="tv_msg_type_lost">J'ai oublié mon sac...</string>
 
 
 </resources>
