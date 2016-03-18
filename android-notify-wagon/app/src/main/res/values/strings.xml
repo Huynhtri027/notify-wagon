@@ -46,7 +46,7 @@
     <string name="tv_msg_type_agression">Une agression est en cours</string>
     <string name="tv_msg_type_pickpoket">Attention pickpockets</string>
     <string name="tv_msg_type_ill">Une personne est malade</string>
-    <string name="tv_msg_type_lost">J\'ai oublié mon sac...</string>
+    <string name="tv_msg_type_lost">J\'ai oublié mon sac</string>
 
     <string name="msg_pickpoket">Attention un pickpocket est action</string>
     <string name="msg_agression">Une agression est en cours. Pouvez-vous aider ?</string>
