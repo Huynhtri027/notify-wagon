@@ -25,20 +25,22 @@ import cz.msebera.android.httpclient.Header;
  */
 public class DialogMessageType extends DialogFragment implements DialogInterface.OnClickListener, View.OnClickListener {
 
-    private static final String TAG = "DialogMessage";
+    public static final String TAG = "DialogMessageType";
 
     private TextView tvStatus;
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-        alertBuilder.setTitle(R.string.dialog_msg_title);
+        alertBuilder.setCustomTitle(View.inflate(getActivity(), R.layout.content_title, null));
+
         View dialogView = View.inflate(getActivity(), R.layout.content_menu, null);
         alertBuilder.setView(dialogView);
         alertBuilder.setNeutralButton(R.string.btn_cancel, this);
         ViewUtils.setListenerToView(dialogView, this, R.id.tv_msg_agression,
                 R.id.tv_msg_social,
                 R.id.tv_msg_lost,
-                R.id.tv_msg_pickpocket);
+                R.id.tv_msg_pickpocket,
+                R.id.tv_msg_ill);
 
         tvStatus = (TextView) dialogView.findViewById(R.id.tv_status);
         return alertBuilder.create();
@@ -76,10 +78,16 @@ public class DialogMessageType extends DialogFragment implements DialogInterface
         int id = v.getId();
         switch (id){
             case R.id.tv_msg_agression:
+                sendMessage(getString(R.string.msg_agression));
                 break;
             case R.id.tv_msg_pickpocket:
+                sendMessage(getString(R.string.msg_pickpoket));
                 break;
             case R.id.tv_msg_lost:
+                sendMessage(getString(R.string.msg_lost));
+                break;
+            case R.id.tv_msg_ill:
+                sendMessage(getString(R.string.msg_ill));
                 break;
             case R.id.tv_msg_social:
                 break;

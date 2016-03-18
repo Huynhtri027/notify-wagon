@@ -5,6 +5,7 @@ import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
 import android.connecthings.notifywagon.fragment.DialogMessage;
+import android.connecthings.notifywagon.fragment.DialogMessageType;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.utils.AdapterFriends;
 import android.connecthings.notifywagon.utils.Adapter_Alert;
@@ -51,7 +52,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(new DialogMessage(),"msg");
+                showDialog(new DialogMessageType(),DialogMessageType.TAG);
             }
         });
 
@@ -73,7 +74,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        //getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 

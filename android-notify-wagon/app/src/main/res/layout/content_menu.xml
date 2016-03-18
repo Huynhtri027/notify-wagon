@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:textColor="@color/title"
+        android:textColor="@color/colorPlace"
         android:textSize="12sp"
         android:visibility="gone"
         />
@@ -19,19 +19,16 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_msg_type_pickpoket"
         android:padding="12dp"
-        android:textAlignment="center"
-        android:textColor="@color/title"
+        android:textColor="@color/colorMsg"
         android:textSize="18sp"
         />
 
     <TextView android:id="@+id/tv_msg_lost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tv_msg_type_pickpoket"
-        android:layout_paddingTop="12dp"
+        android:text="@string/tv_msg_type_lost"
         android:padding="12dp"
-        android:textAlignment="center"
-        android:textColor="@color/title"
+        android:textColor="@color/colorMsg"
         android:textSize="18sp"/>
 
     <TextView android:id="@+id/tv_msg_agression"
@@ -39,8 +36,16 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_msg_type_agression"
         android:padding="12dp"
-        android:textAlignment="center"
-        android:textColor="@color/title"
+        android:textColor="@color/colorMsg"
+        android:textSize="18sp"/>
+
+
+    <TextView android:id="@+id/tv_msg_ill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_ill"
+        android:padding="12dp"
+        android:textColor="@color/colorMsg"
         android:textSize="18sp"/>
 
     <TextView android:id="@+id/tv_msg_social"
@@ -48,8 +53,7 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_msg_type_social"
         android:padding="12dp"
-        android:textAlignment="center"
-        android:textColor="@color/title"
+        android:textColor="@color/colorMsg"
         android:textSize="18sp"/>
 
 </LinearLayout>

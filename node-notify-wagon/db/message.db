@@ -16,10 +16,15 @@
 {"message":"bienvenu chez nous encore","type":"alert","sender":"olivier","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"YktHKCmCGYuW2KPi"}
 {"message":"jolie jolie jolie","type":"social","sender":"RATP","places":["l1-pv-chat"],"_id":"dI0Mc1tT3kd0hXvc"}
 {"message":"quelle journée super","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"ebgBht52mzTI7bKU"}
+{"message":"test1","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"eznbKjA2yCxNNN4K"}
 {"message":"tedt","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"fD0TRzJbAyio5QGl"}
 {"message":"quelle journée","type":"social","sender":"RATP","places":["l1-pv-chat"],"direction":"Porte de Vincennes","line":"l1","_id":"hsqNFJkJwWBYh9h3"}
+{"message":"test2","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"jsxsFAyaUGahi3L3"}
 {"message":"rag","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"mnOLirWMDBUOG2g0"}
 {"message":"quelle journée encore social","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"nWwDHw8l3vKbstzm"}
 {"message":"bienvenu","type":"alert","sender":"olivier","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"uHryxn3pSTOHIHSU"}
-{"message":"test1","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"eznbKjA2yCxNNN4K"}
-{"message":"test2","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"jsxsFAyaUGahi3L3"}
+{"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"ol7dmQyovhKuoo9o"}
+{"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"KVVYslXeIsCLVgQS"}
+{"message":"J'ai oubli� mon sac bleu ciel","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"7r7yyA6DLr427GCV"}
+{"message":"Une agression est en cours. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"U2GdHUG0HYQl13F0"}
+{"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"olivier","type":"pickpocket","_id":"c2JYx8dLOmNw9yek"}

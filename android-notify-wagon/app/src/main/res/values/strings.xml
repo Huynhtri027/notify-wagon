@@ -35,6 +35,7 @@
     <string name="friends_in_train">%d ami(s) dans le trains</string>
 
     <string name="dialog_msg_title">Votre Message</string>
+    <string name="dialog_msg_type_title">Les messages</string>
 
     <string name="btn_send">Envoyer</string>
     <string name="btn_cancel">cancel</string>
@@ -43,7 +44,13 @@
     <string name="tv_msg_type_social">A vos amis</string>
     <string name="tv_msg_type_agression">Une agression est en cours</string>
     <string name="tv_msg_type_pickpoket">Attention pickpockets</string>
-    <string name="tv_msg_type_lost">J'ai oublié mon sac...</string>
+    <string name="tv_msg_type_ill">Une personne est malade</string>
+    <string name="tv_msg_type_lost">J\'ai oublié mon sac...</string>
+
+    <string name="msg_pickpoket">Attention un pickpocket est action</string>
+    <string name="msg_agression">Une agression est en cours. Pouvez-vous aider ?</string>
+    <string name="msg_ill">Une personne est malade. Pouvez-vous aider ?</string>
+    <string name="msg_lost">J\'ai oublié mon sac bleu ciel</string>
 
 
 </resources>
