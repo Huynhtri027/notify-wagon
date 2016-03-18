@@ -1,5 +1,7 @@
 package android.connecthings.notifywagon.model;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  */
 public class Message {
 
-    public static enum TYPE{social, alert};
+    public static enum TYPE{alert, social, clean, lost, agression, ill, pickpocket};
 
     private String message;
     private String sender;
@@ -25,15 +27,19 @@ public class Message {
         this.sender = sender;
         this.type = type;
         this.places = new ArrayList<>();
-        this.places.add(placeId);
+        if(!TextUtils.isEmpty(placeId)) {
+            this.places.add(placeId);
+        }
+        this.direction = direction;
+        this.line = line;
+    }
+
+    public Message(String message, String sender, TYPE type, String placeId) {
+       this(message, sender, type, placeId, null, null);
     }
 
     public Message(String message, String sender, TYPE type, String direction, String line) {
-        this.message = message;
-        this.sender = sender;
-        this.type = type;
-        this.direction = direction;
-        this.line = line;
+        this(message, sender, type, null, direction, line);
     }
 
     public String getMessage() {

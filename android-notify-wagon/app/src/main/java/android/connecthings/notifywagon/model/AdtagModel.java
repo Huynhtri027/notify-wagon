@@ -7,6 +7,7 @@ public class AdtagModel {
     public static class CATEGORY {
         public static String PLACE="place";
         public static String LINE="line";
+        public static String INFO_WAGON="infoWagon";
     }
 
     public static class FIELD{
@@ -17,6 +18,8 @@ public class AdtagModel {
         public static String TYPE="type";
         public static String DIRECTION="direction";
         public static String LINE="line";
+        public static String VITESSE="vitesse";
+        public static String TEMPERATURE="temperature";
     }
 
 }

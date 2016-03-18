@@ -3,6 +3,7 @@ package android.connecthings.notifywagon.utils;
 import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
+import android.connecthings.notifywagon.url.NwUrl;
 import android.connecthings.notifywagon.url.NwUrlUser;
 import android.connecthings.notifywagon.url.UrlNotifyWagon;
 import android.connecthings.util.Log;
@@ -116,20 +117,18 @@ public class ConnectionManagerServices {
         client.put(null, urlUser.toString(), se, "application/json", responseHandler);
     }
 
-    public void sendMessageToFriendsToJsonWebService(Message message, String url) {
+    public void sendMessage(Message message, ResponseHandlerInterface responseHandler) {
+        NwUrlUser urlUser = new NwUrlUser();
+        urlUser.sendMessage();
+        Log.d(TAG, "send message ", urlUser.toString());
         StringEntity se = null;
-        JSONObject jsonParams = new JSONObject();
         try {
-            jsonParams.put("message",message.getMessage());
-            se = new StringEntity(jsonParams.toString());
-            Log.d("json",jsonParams.toString()+"");
+            se = new StringEntity(new Gson().toJson(message));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null,url, se, "application/json", responseHandler);
+        client.post(null,urlUser.toString(), se, "application/json", responseHandler);
     }
 
     public void sendAlertMessageToJsonWebService(Message alertMessage , String url){

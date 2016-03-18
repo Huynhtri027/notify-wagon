@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
+import android.connecthings.notifywagon.fragment.DialogMessage;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.utils.AdapterFriends;
 import android.connecthings.notifywagon.utils.Adapter_Alert;
@@ -18,9 +19,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{

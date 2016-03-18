@@ -3,7 +3,7 @@
 model
 {
 message:"the user phone id",
-type:"type de message | alert, social, clean, lost, agression, ill",
+type:"type de message | alert, social, clean, lost, agression, ill, pickpocket",
 sender:"pseudo ou organisme",
 experacyDate:"date d'expiration du message",
 "places":"[] - (optional) lieux associés au message",
@@ -47,6 +47,7 @@ module.exports.dispatch = function(message, callback){
   /**
   *Dispatch works for single message
   */
+  log.d("message : ", message);
   var users = null;
   if(message.places){
     users = servicePlaces.findUsers(message.places[0]);
