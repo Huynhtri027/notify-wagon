@@ -37,6 +37,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     AdapterFriends adpter_message;
     Adapter_wagon adapter_voiture;
     ViewPager view_Alert_place,view_Alert_voiture,view_alert_message_friends;
+    TextView notifAlert, notifMessage ,notiffWagon ;
     ConnectionManagerServices connectionManagerServices;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
        // placeName = (TextView) findViewById(R.id.tv_place);
         view_alert_message_friends = (ViewPager)findViewById(R.id.viewpager3);
 
-
+        notifAlert = (TextView)findViewById(R.id.notificationNumberAlert);
+        notiffWagon = (TextView)findViewById(R.id.notificationNumberFriend);
+        notifMessage = (TextView)findViewById(R.id.notificationNumberMessageFriends);
     }
 
     public void showDialog(DialogFragment fragment, String name){
@@ -119,6 +122,16 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
         adpter_message = new AdapterFriends(currentBeacon.getBox().getMessageFriends());
         view_alert_message_friends.setAdapter(adpter_message);
+
+        if (currentBeacon.getBox().getMessagePlace().size()>0){
+            notifAlert.setText(currentBeacon.getBox().getMessagePlace().size() + 1 + "");
+        }
+        if(currentBeacon.getBox().getFriends().size()>0){
+            notiffWagon.setText(currentBeacon.getBox().getFriends().size()+1 +"");
+        }
+        if (currentBeacon.getBox().getMessageFriends().size()>0){
+            notifMessage.setText(currentBeacon.getBox().getMessageFriends().size() +1 +"");
+        }
     }
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){

@@ -82,19 +82,43 @@
             android:background="@color/colorAlert"
             android:orientation="horizontal"
             android:layout_marginTop="2dp">
-            <ImageView
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/alert_index" />
+                android:layout_height="140dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/alert_index"
+                    android:id="@+id/imageNotif"/>
+
+                <TextView
+                    android:layout_width="26dp"
+                    android:layout_height="27dp"
+                    android:paddingTop="5dp"
+                    android:textSize="13dp"
+                    android:textAlignment="center"
+                    android:layout_toRightOf="@id/imageNotif"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/notificationNumberAlert"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/bulle_notification_index"/>
+
+            </RelativeLayout>
+
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="140dp"
                 android:background="#FFFFFF"
-                android:layout_marginLeft="25dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
 
                 <android.support.v4.view.ViewPager
                     android:layout_marginLeft="10dp"
@@ -114,19 +138,43 @@
             android:layout_height="140dp"
             android:background="@color/colorFriends"
             android:orientation="horizontal"
-            android:layout_marginTop="2dp">
-            <ImageView
+            android:layout_marginTop="2dp"  >
+
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/friends_index" />
+                android:layout_height="140dp">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/friends_index"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageFriend"/>
+                <TextView
+                    android:paddingTop="5dp"
+                    android:textSize="13dp"
+                    android:layout_width="26dp"
+                    android:layout_height="27dp"
+                    android:layout_toRightOf="@id/imageFriend"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/notificationNumberFriend"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="45dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/bulle_notification_index"/>
+
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="140dp"
                 android:background="#FFFFFF"
-                android:layout_marginLeft="25dp"
+
                 android:orientation="vertical">
 
                 <android.support.v4.view.ViewPager
@@ -145,18 +193,42 @@
             android:background="@color/colorMessage"
             android:orientation="horizontal"
             android:layout_marginTop="2dp">
-            <ImageView
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/message_index" />
+                android:layout_height="200dp">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/message_index"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageMessageFriends"/>
+
+                <TextView
+                    android:paddingTop="5dp"
+                    android:textSize="13dp"
+                    android:layout_width="26dp"
+                    android:layout_height="27dp"
+                    android:layout_toRightOf="@id/imageMessageFriends"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/notificationNumberMessageFriends"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="75dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/bulle_notification_index"/>
+
+            </RelativeLayout>
+
+
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:background="#FFFFFF"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="12dp"
                 android:orientation="vertical">
 
                 <android.support.v4.view.ViewPager
