@@ -16,9 +16,9 @@
 
     <string name="tv_metro_ligne">  Metro ligne  %s</string>
     <string name="tv_metro_direction">  direction : %s </string>
-    <string name="tv_metro_vitesse">  vitesse: %s </string>
+    <string name="tv_metro_vitesse">  vitesse: %s KM/H </string>
 
-    <string name="tv_metro_temperature">  temperature: %s </string>
+    <string name="tv_metro_temperature">  temperature: %s celus</string>
 
     <string name="tv_alert_title">Alerte</string>
     <string name="tv_alert_information"> Retrouver ici les dernières alertes sur vos lignes</string>
