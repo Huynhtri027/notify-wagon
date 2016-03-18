@@ -58,16 +58,16 @@ public class Adapter_wagon extends PagerAdapter {
             Wagon wagonObject = wagons.get(position);
             List<String> friendWagon = wagonObject.getUsers();
             String user = friendWagon.get(position);
+            int nextFriend =  position + 1 ;
+            int wagonposition = wagonObject.getPosition() +1 ;
             user_txt.setText(user);
-            voiture_number.setText("Voiture: "+wagonObject.getPosition()+1 +"");
-            if (friendWagon.get(position +1) != null){
-                String second = friendWagon.get(position +1 );
+            voiture_number.setText("Voiture: "+wagonposition +"");
+
+            if (friendWagon.get(nextFriend) != null){
+                String second = friendWagon.get(position +1);
                 secondUser_txt.setText(second);
             }
-            if (getCount()>2 && position <2){
-                int count = getCount()-2 ;
-                userNumber.setText("et %d autres personnes"+count);
-            }
+
             // update view
             // imageView.setImageResource(image[position]);
         } catch (Exception e1) {

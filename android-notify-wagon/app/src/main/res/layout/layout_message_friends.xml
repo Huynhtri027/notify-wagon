@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sender"
+        android:text=""
         android:textSize="20dp"
         android:textColor="@color/text"
         android:id="@+id/tv_friendSender"/>
@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Message"
+        android:text=""
         android:textColor="@color/text"
         android:textSize="15dp"
         android:id="@+id/tv_friendsMessage"

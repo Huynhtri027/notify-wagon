@@ -100,7 +100,8 @@
                 <TextView
                     android:layout_width="26dp"
                     android:layout_height="27dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="4dp"
+                    android:text="0"
                     android:textSize="13dp"
                     android:textAlignment="center"
                     android:layout_toRightOf="@id/imageNotif"
@@ -158,7 +159,8 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/imageFriend"/>
                 <TextView
-                    android:paddingTop="5dp"
+                    android:paddingTop="4dp"
+                    android:text="0"
                     android:textSize="13dp"
                     android:layout_width="26dp"
                     android:layout_height="27dp"
@@ -209,7 +211,8 @@
                     android:id="@+id/imageMessageFriends"/>
 
                 <TextView
-                    android:paddingTop="5dp"
+                    android:paddingTop="4dp"
+                    android:text="0"
                     android:textSize="13dp"
                     android:layout_width="26dp"
                     android:layout_height="27dp"

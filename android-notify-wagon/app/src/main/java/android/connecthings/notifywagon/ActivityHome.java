@@ -132,13 +132,13 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
 // check for notification count
         if (currentBeacon.getBox().getMessagePlace().size()>0){
-            notifAlert.setText(currentBeacon.getBox().getMessagePlace().size() + 1 + "");
+            notifAlert.setText(currentBeacon.getBox().getMessagePlace().size()   + "");
         }
         if(currentBeacon.getBox().getFriends().size()>0){
-            notiffWagon.setText(currentBeacon.getBox().getFriends().size()+1 +"");
+            notiffWagon.setText(currentBeacon.getBox().getFriends().size()  +"");
         }
         if (currentBeacon.getBox().getMessageFriends().size()>0){
-            notifMessage.setText(currentBeacon.getBox().getMessageFriends().size() +1 +"");
+            notifMessage.setText(currentBeacon.getBox().getMessageFriends().size()  +"");
         }
         if (currentBeacon!=null){
             this.setInformationToFirstBox(currentBeacon);

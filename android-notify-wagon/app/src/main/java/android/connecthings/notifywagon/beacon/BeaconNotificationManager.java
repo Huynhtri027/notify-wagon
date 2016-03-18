@@ -40,7 +40,7 @@ public class BeaconNotificationManager {
         mNotificationBuilder.setContentText(generateDesc(previousNwBeacon, currentNwBeacon));
 
         mNotificationBuilder.setContentIntent(intent)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_normal)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setSound(defaultSoundUri)
                 .setAutoCancel(true);
 
