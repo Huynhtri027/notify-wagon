@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,9 +29,16 @@ public  class Adapter_Alert extends PagerAdapter {
         this.messages = messageList;
     }
 
+    public Adapter_Alert() {
+        this.messages = new ArrayList<Message>(); ;
+    }
+
     @Override
     public int getCount() {
-        return messages.size();
+        if (messages.size()>0){
+            return messages.size();
+        }
+        return  0;
     }
 
     @Override
@@ -64,6 +72,10 @@ public  class Adapter_Alert extends PagerAdapter {
     public void destroyItem(View collection, int position, Object view) {
         ((ViewPager) collection).removeView((View) view);
 
+    }
+
+    public  void updateListe (List<Message> messageList) {
+        this.messages = messageList;
     }
 
 }

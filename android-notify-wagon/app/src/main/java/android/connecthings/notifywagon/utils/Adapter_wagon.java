@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,16 +19,22 @@ import java.util.List;
  */
 public class Adapter_wagon extends PagerAdapter {
     List<Wagon> wagons;
-
-
     @Override
     public int getCount() {
-        return wagons.size();
+
+        if (wagons.size()>0){
+            return wagons.size();
+        }
+        return  0;
     }
 
     @Override
     public boolean isViewFromObject(View collection, Object object) {
         return collection == ((View) object);
+    }
+
+    public Adapter_wagon(){
+        this.wagons = new ArrayList<Wagon>(); ;
     }
 
     public Adapter_wagon(List<Wagon> wagonList) {
@@ -74,6 +81,10 @@ public class Adapter_wagon extends PagerAdapter {
     @Override
     public void destroyItem(View collection, int position, Object view) {
         ((ViewPager) collection).removeView((View) view);
+    }
+
+    public  void updateListe (List<Wagon> wagonList) {
+        this.wagons = wagonList;
     }
 
 }
