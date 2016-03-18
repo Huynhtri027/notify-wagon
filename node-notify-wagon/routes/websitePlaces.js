@@ -1,5 +1,5 @@
 'use strict';
-var places = require('../data/places');
+var servicePlaces = require('../services/places');
 
 module.exports = [
   {

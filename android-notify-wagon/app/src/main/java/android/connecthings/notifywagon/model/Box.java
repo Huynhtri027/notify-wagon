@@ -8,13 +8,13 @@ public class Box {
 
     ArrayList<Message> messagePlace;
     ArrayList<Message> messageFriends;
-    ArrayList<Wagon> friends;
+    WagonBox wagonBox;
 
     public Box() {
-        this.friends = new ArrayList<>();
         this.messageFriends =  new ArrayList<Message>();
         this.messagePlace =  new ArrayList<Message>();
     }
+
 
 
     public ArrayList<Message> getMessagePlace() {
@@ -25,7 +25,7 @@ public class Box {
         return messageFriends;
     }
 
-    public ArrayList<Wagon> getFriends() {
-        return friends;
+    public WagonBox getWagonBox() {
+        return wagonBox;
     }
 }
