@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,16 +19,22 @@ import java.util.List;
  */
 public class Adapter_wagon extends PagerAdapter {
     List<Wagon> wagons;
-
-
     @Override
     public int getCount() {
-        return wagons.size();
+
+        if (wagons.size()>0){
+            return wagons.size();
+        }
+        return  0;
     }
 
     @Override
     public boolean isViewFromObject(View collection, Object object) {
         return collection == ((View) object);
+    }
+
+    public Adapter_wagon(){
+        this.wagons = new ArrayList<Wagon>(); ;
     }
 
     public Adapter_wagon(List<Wagon> wagonList) {
@@ -37,14 +44,12 @@ public class Adapter_wagon extends PagerAdapter {
 
     @Override
     public Object instantiateItem(View collection, int position) {
-
         // Inflating layout
         LayoutInflater inflater = (LayoutInflater) collection.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // Setting view you want to display as a row element
         View view = inflater.inflate(R.layout.layout_friends, null);
        // call textview
-
         TextView voiture_number = (TextView) view.findViewById(R.id.tv_voiture_information);
         TextView user_txt = (TextView) view.findViewById(R.id.tv_user_name);
         TextView secondUser_txt = (TextView) view.findViewById(R.id.tv_second_user_name);
@@ -76,7 +81,10 @@ public class Adapter_wagon extends PagerAdapter {
     @Override
     public void destroyItem(View collection, int position, Object view) {
         ((ViewPager) collection).removeView((View) view);
+    }
 
+    public  void updateListe (List<Wagon> wagonList) {
+        this.wagons = wagonList;
     }
 
 }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,12 @@ public class AdapterFriends extends PagerAdapter {
 
         return collection == ((View) object);
     }
+
+    public AdapterFriends() {
+    this.messages = new ArrayList<Message>(); ;
+
+    }
+
     public AdapterFriends(List<Message> messageList) {
         super();
         this.messages = messageList;
@@ -28,7 +35,10 @@ public class AdapterFriends extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return messages.size();
+        if (messages.size()>0 ){
+            return messages.size();
+        }
+        return  0;
     }
 
     @Override
@@ -61,5 +71,7 @@ public class AdapterFriends extends PagerAdapter {
         ((ViewPager) collection).removeView((View) view);
 
     }
-
+    public  void updateListe (List<Message> messageList) {
+        this.messages = messageList;
+    }
 }
