@@ -6,12 +6,18 @@
 
     <string name="tv_place_empty_title">Aucun lieu détecté</string>
     <string name="tv_place_empty_desc">Aucun lieu n\'est détecté actuellement.</string>
+    <string name="tv_hint_message">Votre message</string>
+
+    <string name="msg_sent_error">L\'envoi de votre message a rencontré une erreur.\nRéassayer !</string>
+    <string name="msg_sent_success">Votre message a bien été envoyé.</string>
+    <string name="msg_sent_in_progress">Votre message est en cours d\'envoi.</string>
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="pseudo">  pseudo</string>
 
     <string name="beacon_notif_title">%1$s, ligne: %2$s, direction: %3$s</string>
     <string name="friend_messages">%d message(s) d\'ami(s)</string>
-    <string name="other_messages">%d autres message(s)</string>
+    <string name="other_messages">%d autre(s) message(s)</string>
     <string name="friends_in_train">%d ami(s) dans le trains</string>
 
     <string name="dialog_msg_title">Votre Message</string>

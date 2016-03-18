@@ -8,11 +8,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
  >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tkjflkdsjflskdjfljksdfljkdsfjldksjflkqsjf"/>
+        android:id="@+id/tv_status"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_msg"
+        android:hint="@string/tv_hint_message"
+        />
 
 </LinearLayout>

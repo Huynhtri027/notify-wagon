@@ -18,12 +18,16 @@ public class NwUrlUser extends NwUrl {
     }
 
     public Url saveUser(){
-        return addPath("api/user");
+        return addPath(PATH.API_USER);
     }
 
 
     public Url updateUser(String phoneId){
-        return addPath("api/user").addPath(phoneId);
+        return addPath(PATH.API_USER).addPath(phoneId);
+    }
+
+    public Url sendMessage(){
+        return addPath(PATH.API_MESSAGE);
     }
 
 }

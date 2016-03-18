@@ -22,6 +22,7 @@ public class NwUrl extends Url {
     }
 
     public static final class PATH {
+        public final static String API_MESSAGE="api/message/dispatch";
         public final static String API_USER="api/user";
         public final static String UPDATE_PLACE="updatePlace";
     }

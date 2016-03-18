@@ -4,36 +4,20 @@ import android.app.DialogFragment;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
+import android.connecthings.notifywagon.fragment.DialogMessage;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
-import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.Log;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.entity.StringEntity;
-import cz.msebera.android.httpclient.message.BasicHeader;
-import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
