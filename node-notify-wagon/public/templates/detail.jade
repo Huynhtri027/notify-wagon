@@ -21,6 +21,9 @@ html(lang="en")
                   span.mdl-list__item-primary-content
                     i.material-icons.mdl-list__item-avatar=avatar
                     | #{item.name}
+                    span.mdl-list__item-sub-title
+                      if item.users
+                        #{item.users.length}
                   span.mdl-list__item-secondary-action
                     button(data-type="item", data-to=item.name, data-id=item.id, data-peoples=60).mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored.show-dialog
                       i.material-icons message

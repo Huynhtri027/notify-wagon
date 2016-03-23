@@ -1,21 +1,75 @@
 package android.connecthings.notifywagon.model;
 
+import android.text.TextUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by ssr on 16/03/16.
  */
 public class Message {
 
-    String message ;
+    public static enum TYPE{alert, social, clean, lost, agression, ill, pickpocket;
 
-    public Message(String message) {
+        /*private final int stringId;
+
+        TYPE(int stringId) {
+            this.stringId = stringId;
+        }*/
+    };
+
+    private String message;
+    private String sender;
+    private TYPE type;
+    private List<String> places;
+    private String direction;
+    private String line;
+
+    public Message(){
+        places = new ArrayList<>();
+    }
+
+    public Message(String message, String sender, TYPE type, String placeId, String direction, String line) {
         this.message = message;
+        this.sender = sender;
+        this.type = type;
+        this.places = new ArrayList<>();
+        if(!TextUtils.isEmpty(placeId)) {
+            this.places.add(placeId);
+        }
+        this.direction = direction;
+        this.line = line;
+    }
+
+    public Message(String message, String sender, TYPE type, String placeId) {
+       this(message, sender, type, placeId, null, null);
+    }
+
+    public Message(String message, String sender, TYPE type, String direction, String line) {
+        this(message, sender, type, null, direction, line);
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getSender() {
+        return sender;
+    }
+
+    public TYPE getType() {
+        return type;
+    }
+
+    public List<String> getPlaces() {
+        return places;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public String getLine() {
+        return line;
     }
 }

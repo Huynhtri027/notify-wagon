@@ -1,5 +1,6 @@
 {"phoneId":"12","pseudo":"SARRA","_id":"CTaSeGYY8ull9PQx"}
 {"phoneId":"12345","pseudo":"tojjto","_id":"TZyGmu8Qjug0OA2h","pushToken":"dfusl0a0oxE:APA91bHBkm6Kr83_oZJjv-5nS4BCKra7wwZcVhzEWFGl73xmHEpZutbc4nmt7QqKBJj_LQgzIULY-TiZD_3kuZBQeTjrX5sWHWgtKlJm-NcR_6Hyp23NCrMhrumRQ_7IB2CgnuCH-bcl"}
 {"phoneId":"1234dfdf5","pseudo":"toto","_id":"V5SOnoMtRfSNjFJS"}
+{"phoneId":"e7e7ba7a30141870","pseudo":"olivier","pushToken":"fIyFZ3dQwnE:APA91bHo7WvwB0faR1zKkQAWdFyFDadxA9kIwO6qypTRpcZ9lR2gyFh2S4ApDtlt1a5wGQgBGiB6BN2GzlWCPMQYY2K6uLVVmMlQDe4BOosQnl0rYS1WfPlKijOYDZq_3g8u8qgLerrf","_id":"lpLfdl9McD1o5IFl"}
 {"$$indexCreated":{"fieldName":"phoneId","unique":true,"sparse":false}}
 {"$$indexCreated":{"fieldName":"pseudo","unique":true,"sparse":false}}

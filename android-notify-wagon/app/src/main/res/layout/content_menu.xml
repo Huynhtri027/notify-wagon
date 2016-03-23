@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMsg"
+    >
+
+    <TextView android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        />
+
+
+    <TextView android:id="@+id/tv_msg_pickpocket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_pickpoket"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/pickpocket_infos"
+        android:drawablePadding="3dp"
+        />
+
+    <TextView android:id="@+id/tv_msg_lost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_lost"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/objetperdu_infos"
+        android:drawablePadding="3dp"/>
+
+    <TextView android:id="@+id/tv_msg_agression"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_agression"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/message_infos"
+        android:drawablePadding="3dp"
+        />
+
+
+    <TextView android:id="@+id/tv_msg_ill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_ill"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/malaise_infos"
+        android:drawablePadding="3dp"
+        />
+
+    <TextView android:id="@+id/tv_msg_social"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_msg_type_social"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@drawable/message_infos"
+        android:drawablePadding="3dp"
+        />
+
+</LinearLayout>

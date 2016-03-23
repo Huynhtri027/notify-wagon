@@ -1,5 +1,3 @@
-{"message":"quelle journée","type":"alert","sender":"RATP","places":["l1-pv-chat"],"_id":"AmaHpYeLleNU4YX5"}
-{"message":"quelle journée encore une alerte","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"l1","_id":"COfTNh87ul5NLtWP"}
-{"message":"quelle journée encore social","type":"social","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"RHEDNLh2G8RLAr2u"}
-{"message":"jolie jolie jolie","type":"social","sender":"RATP","places":["l1-pv-chat"],"_id":"dI0Mc1tT3kd0hXvc"}
-{"message":"quelle journée","type":"social","sender":"RATP","places":["l1-pv-chat"],"direction":"Porte de Vincennes","line":"l1","_id":"hsqNFJkJwWBYh9h3"}
+{"message":"La climatisation de votre train ne fonctionne pas. Veuillez nous excuser.","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"YWgVoLjhAgIbB7ZP"}
+{"message":"N'oubliez pas ce soir la soirée OhOhOh","type":"social","sender":"Jean-No","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"riDsVB8fvSP2Bzcc"}
+{"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"ss demo","type":"pickpocket","_id":"kC4R8nFl9k3xEQjU"}

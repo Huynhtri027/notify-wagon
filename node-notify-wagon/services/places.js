@@ -27,6 +27,22 @@ var initUsersInItem = function(itemId){
   return item;
 }
 
+var addNbUsers = function(places){
+
+
+  _.each(places, (place)=>{
+      var count = 0;
+    _.each(place.items, (item)=>{
+      if(item.users){
+        count = count + item.users.length;
+      }
+
+    })
+    place.nbUsers = count;
+  });
+
+}
+
 module.exports.find = function(itemId){
   return searchItem(itemId);
 }
@@ -58,7 +74,8 @@ module.exports.userEnters = function(user, place){
 
 module.exports.userExits = function(user, place){
   var place = initUsersInItem(place);
-  if(place.users == null){
+
+  if(place == null){
     return "placeNotFound";
   }
   var index = place.users.indexOf(user);
@@ -72,21 +89,46 @@ module.exports.userExits = function(user, place){
 
 module.exports.friendsInPlace = function(pseudo, itemId){
   var place = this.findPlace(itemId);
-  var usersInPace = [];
+  var placesWithUsers = [];
   if(place){
-    console.log(">>>>>> place", place);
+    var count = 0;
     _.forEach(place.items, (item)=>{
-      console.log(">>>>>> item", item);
-      if(item.users){
-        _.forEach(item.users, (user)=>{
+      if(item.users && item.users.length !==0){
+        var index = item.users.indexOf(pseudo)
+        if(index ===-1){
+            placesWithUsers.push(item);
+            count = count + item.users.length;
+        }else{
+          item = _.cloneDeep(item);
+          item.users.splice(index, 1);
+          if(item.users.length > 0){
+            placesWithUsers.push(item);
+            count = count + item.users.length;
+          }
+        }
+
+        /*_.forEach(item.users, (user)=>{
           if(user !== pseudo){
             var place = _.cloneDeep(item);
             delete place.users;
             usersInPace.push({user: user, place: place})
           }
-        });
+        });*/
       }
     });
   }
-  return usersInPace;
+  return {count: count, wagons: placesWithUsers};
+}
+
+module.exports.find = function(type, id){
+  return _.find(places, {type:type, id:id});
+}
+
+module.exports.dataForWebSiteHome = function(){
+  var answers = {};
+  answers.stations = _.filter(places, {type:"station"});
+  answers.trains = _.filter(places, {type:"train"});
+  addNbUsers(answers.stations);
+  addNbUsers(answers.trains);
+  return answers;
 }

@@ -3,7 +3,7 @@
 model
 {
 message:"the user phone id",
-type:"type de message | alert, social, clean, lost, agression, ill",
+type:"type de message | alert, social, clean, lost, agression, ill, pickpocket",
 sender:"pseudo ou organisme",
 experacyDate:"date d'expiration du message",
 "places":"[] - (optional) lieux associés au message",
@@ -47,6 +47,7 @@ module.exports.dispatch = function(message, callback){
   /**
   *Dispatch works for single message
   */
+  log.d("message : ", message);
   var users = null;
   if(message.places){
     users = servicePlaces.findUsers(message.places[0]);
@@ -95,7 +96,7 @@ module.exports.msgInBoxForPlace = function(itemId, callback){
   items = _.map(items, "id");
   console.log(">> items2: ", items);
   //places:{$in:items},
-  db.find({ type:{$ne:'social'}}, callback);
+  db.find({ type:{$ne:'social'},places:{$in:items}}, callback);
 }
 
 module.exports.msgInBoxFromFriends = function(itemId, callback){
@@ -104,7 +105,7 @@ module.exports.msgInBoxFromFriends = function(itemId, callback){
   console.log(">> items 3: ", place.items);
   if(place.type ===  'station'){
     //places:{$in:place.items}
-    db.find({ type:'social'}, callback);
+    db.find({ type:'social', places:{$in:place.items}}, callback);
   }else{
     db.find({line: place.line, direction:place.direction, type:'social'}, callback);
   }
