@@ -15,21 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ssr on 17/03/16.
  */
-public  class Adapter_Alert extends PagerAdapter {
+public  class AdapterAlert extends PagerAdapter {
     List<Message> messages ;
     @Override
     public boolean isViewFromObject(View collection, Object object) {
 
         return collection == ((View) object);
     }
-    public Adapter_Alert(List<Message> messageList) {
+    public AdapterAlert(List<Message> messageList) {
         super();
         this.messages = messageList;
     }
 
-    public Adapter_Alert() {
+    public AdapterAlert() {
         this.messages = new ArrayList<Message>(); ;
     }
 

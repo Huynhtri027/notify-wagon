@@ -29,7 +29,6 @@ import cz.msebera.android.httpclient.protocol.HTTP;
 
 public class Home extends AppCompatActivity  {
 
-
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
 

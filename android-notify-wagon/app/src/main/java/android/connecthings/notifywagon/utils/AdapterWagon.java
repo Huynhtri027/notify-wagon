@@ -15,9 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ssr on 18/03/16.
  */
-public class Adapter_wagon extends PagerAdapter {
+public class AdapterWagon extends PagerAdapter {
     List<Wagon> wagons;
     @Override
     public int getCount() {
@@ -33,11 +32,11 @@ public class Adapter_wagon extends PagerAdapter {
         return collection == ((View) object);
     }
 
-    public Adapter_wagon(){
+    public AdapterWagon(){
         this.wagons = new ArrayList<Wagon>(); ;
     }
 
-    public Adapter_wagon(List<Wagon> wagonList) {
+    public AdapterWagon(List<Wagon> wagonList) {
         super();
         this.wagons = wagonList;
     }

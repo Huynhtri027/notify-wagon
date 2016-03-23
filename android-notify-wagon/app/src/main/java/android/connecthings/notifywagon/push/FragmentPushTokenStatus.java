@@ -22,17 +22,11 @@ import com.google.android.gms.common.GoogleApiAvailability;
 public class FragmentPushTokenStatus extends Fragment{
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private static final String TAG="FragmentPushTokenStatus";
+    public static final String TAG="FragmentPushTokenStatus";
 
-    private TextView tvPushTokenStatus = null;
     private BroadcastReceiver registrationBroadcastReceiver;
     private boolean isReceiverRegistered;
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_push_token_status, container, false);
-        tvPushTokenStatus = (TextView) view.findViewById(R.id.tvPushTokenStatus);
-        return view;
-    }
+    private boolean isTokenRegister;
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
@@ -41,9 +35,9 @@ public class FragmentPushTokenStatus extends Fragment{
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (NwSharedPreference.getInstance().getTokenRegistrationStatus()) {
-                    tvPushTokenStatus.setText(getString(R.string.push_status_register));
+                    isTokenRegister = true;
                 } else {
-                    tvPushTokenStatus.setText(getString(R.string.push_status_register));
+                    isTokenRegister = false;
                 }
             }
         };

@@ -41,6 +41,7 @@ public class ActivityLogin extends AppCompatActivity {
     public void goHome(){
         Intent myIntent = new Intent(ActivityLogin.this, ActivityHome.class);
         ActivityLogin.this.startActivity(myIntent);
+        finish();
     }
 
 }

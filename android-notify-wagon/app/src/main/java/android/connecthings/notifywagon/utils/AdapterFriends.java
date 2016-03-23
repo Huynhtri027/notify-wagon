@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ssr on 18/03/16.
  */
 public class AdapterFriends extends PagerAdapter {
     List<Message> messages ;

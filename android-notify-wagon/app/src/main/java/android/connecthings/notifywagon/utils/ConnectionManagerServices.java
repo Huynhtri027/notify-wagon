@@ -1,20 +1,16 @@
 package android.connecthings.notifywagon.utils;
 
-import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.Message;
 import android.connecthings.notifywagon.model.UserNotify;
-import android.connecthings.notifywagon.url.NwUrl;
 import android.connecthings.notifywagon.url.NwUrlUser;
-import android.connecthings.notifywagon.url.UrlNotifyWagon;
 import android.connecthings.util.Log;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.ResponseHandlerInterface;
+import com.loopj.android.http.SyncHttpClient;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
@@ -31,24 +27,13 @@ public class ConnectionManagerServices {
 
     private static ConnectionManagerServices INSTANCE;
 
-    private AsyncHttpClient client = new AsyncHttpClient();
-    private AsyncHttpResponseHandler responseHandler;
+    private AsyncHttpClient clientAsync = new AsyncHttpClient();
+    private SyncHttpClient clientSync = new SyncHttpClient();
 
     private Gson gson;
 
     private ConnectionManagerServices() {
         gson = new Gson();
-        responseHandler  = new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Log.d("SERVER FEEDBACK -", "Success Register");
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("SERVER FEEDBACK-FAILED", statusCode + "");
-            }
-        };
     }
 
     public static ConnectionManagerServices getInstance(){
@@ -62,24 +47,7 @@ public class ConnectionManagerServices {
         NwUrlUser urlUser = new NwUrlUser();
         urlUser.updatePlace(pseudo, exitPlaceId, enterPlaceId);
         Log.d(TAG, "urlUser ", urlUser);
-        client.get(urlUser.toString(), responseHandler);
-    }
-
-    public void registerUSerToJsonWebService(UserNotify userNotify, String url) {
-        StringEntity se = null;
-        JSONObject jsonParams = new JSONObject();
-        try {
-            jsonParams.put("phoneId",userNotify.getPhoneId());
-            jsonParams.put("pseudo",userNotify.getPseudo());
-            se = new StringEntity(jsonParams.toString());
-            Log.d("json",jsonParams.toString()+"");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null, url, se, "application/json", responseHandler);
+        clientAsync.get(urlUser.toString(), responseHandler);
     }
 
     public void saveUser(UserNotify userNotify, ResponseHandlerInterface responseHandler) {
@@ -93,10 +61,9 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null, urlUser.toString(), se, "application/json", responseHandler);
+        clientSync.post(null, urlUser.toString(), se, "application/json", responseHandler);
     }
 
-    //update URL custom
     public void updateUser(String token, String phoneId, ResponseHandlerInterface responseHandler){
         StringEntity se = null;
         NwUrlUser urlUser = new NwUrlUser();
@@ -113,8 +80,8 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        // client.post(null,url, se, "application/json", responseHandler);
-        client.put(null, urlUser.toString(), se, "application/json", responseHandler);
+        // clientAsync.post(null,url, se, "application/json", responseHandler);
+        clientSync.put(null, urlUser.toString(), se, "application/json", responseHandler);
     }
 
     public void sendMessage(Message message, ResponseHandlerInterface responseHandler) {
@@ -128,60 +95,7 @@ public class ConnectionManagerServices {
             e.printStackTrace();
         }
         se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null,urlUser.toString(), se, "application/json", responseHandler);
+        clientAsync.post(null, urlUser.toString(), se, "application/json", responseHandler);
     }
-
-    public void sendAlertMessageToJsonWebService(Message alertMessage , String url){
-        StringEntity se = null;
-        JSONObject jsonParams = new JSONObject();
-        try {
-            jsonParams.put("message",alertMessage.getMessage());
-            jsonParams.put("type",alertMessage.getType());
-            jsonParams.put("sender",alertMessage.getSender());
-            jsonParams.put("places",alertMessage.getPlaces());
-            se = new StringEntity(jsonParams.toString());
-            Log.d("json",jsonParams.toString()+"");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        client.post(null, url, se, "application/json", responseHandler);
-    }
-
-
-   public void getListBox(String userPseudo, String placeID)  {
-
-       String url =  new UrlNotifyWagon().getBoxMessage(userPseudo,placeID).toString();
-       client.get(url, new AsyncHttpResponseHandler() {
-
-           @Override
-           public void onStart() {
-               // called before request is started
-               Log.d("ONSTARAART","start");
-           }
-
-           @Override
-           public void onSuccess(int statusCode, Header[] headers, byte[] response) {
-               // called when response HTTP status is "200 OK"
-               Log.d("onSuccess","onSuccess");
-           }
-
-           @Override
-           public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-               Log.d("onFailure",statusCode +"");
-               // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-           }
-
-           @Override
-           public void onRetry(int retryNo) {
-               Log.d("onRetry","onRetry");
-               // called when request is retried
-           }
-       });
-
-  //  return null;
-   }
 
 }

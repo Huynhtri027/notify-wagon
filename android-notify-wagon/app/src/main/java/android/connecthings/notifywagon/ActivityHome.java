@@ -4,13 +4,13 @@ import android.app.DialogFragment;
 import android.connecthings.notifywagon.beacon.BeaconExitEnterCentralizer;
 import android.connecthings.notifywagon.beacon.NwBeaconRange;
 import android.connecthings.notifywagon.beacon.OnEnterPlace;
-import android.connecthings.notifywagon.fragment.DialogMessage;
 import android.connecthings.notifywagon.fragment.DialogMessageType;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.NwBeacon;
+import android.connecthings.notifywagon.push.FragmentPushTokenStatus;
 import android.connecthings.notifywagon.utils.AdapterFriends;
-import android.connecthings.notifywagon.utils.Adapter_Alert;
-import android.connecthings.notifywagon.utils.Adapter_wagon;
+import android.connecthings.notifywagon.utils.AdapterAlert;
+import android.connecthings.notifywagon.utils.AdapterWagon;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.Log;
@@ -34,15 +34,17 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private AdtagBeaconManager adtagBeaconManager;
     private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
     private TextView placeName = null;
-    Context context;
-    String[] messages;
-    Adapter_Alert adpter_alert_message;
-    AdapterFriends adpter_message_friends;
-    Adapter_wagon adapter_voiture;
-    ViewPager view_Alert_place,view_Alert_voiture,view_alert_message_friends;
-    TextView notifAlert, notifMessage ,notiffWagon;
-    TextView placeName_txt,metroLigne_txt,direction_txt,vitesset_txt,tempeature_txt;
-    ConnectionManagerServices connectionManagerServices;
+    private String[] messages;
+    private AdapterAlert adpter_alert_message;
+    private AdapterFriends adpter_message_friends;
+    private AdapterWagon adapter_voiture;
+    private ViewPager view_Alert_place,view_Alert_voiture,view_alert_message_friends;
+    private TextView notifAlert, notifMessage ,notiffWagon;
+    private TextView placeName_txt,metroLigne_txt,direction_txt,vitesset_txt,tempeature_txt;
+    private ConnectionManagerServices connectionManagerServices;
+
+    private FragmentPushTokenStatus fragmentPushTokenStatus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +82,14 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tempeature_txt = (TextView)findViewById(R.id.tv_temperature);
         this.initAdapter();
 
+        fragmentPushTokenStatus = (FragmentPushTokenStatus) getFragmentManager().findFragmentByTag(FragmentPushTokenStatus.TAG);
+        if(fragmentPushTokenStatus == null){
+            fragmentPushTokenStatus = new FragmentPushTokenStatus();
+            getFragmentManager()
+                        .beginTransaction()
+                        .add(fragmentPushTokenStatus, FragmentPushTokenStatus.TAG)
+                         .commit();
+        }
     }
 
     public void showDialog(DialogFragment fragment, String name){
@@ -170,13 +180,13 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     public void initAdapter(){
 
-        adpter_alert_message = new Adapter_Alert();
+        adpter_alert_message = new AdapterAlert();
         view_Alert_place.setAdapter(adpter_alert_message);
 
         adpter_message_friends = new AdapterFriends();
         view_alert_message_friends.setAdapter(adpter_message_friends);
 
-        adapter_voiture = new Adapter_wagon();
+        adapter_voiture = new AdapterWagon();
         view_Alert_voiture.setAdapter(adapter_voiture);
 
     }

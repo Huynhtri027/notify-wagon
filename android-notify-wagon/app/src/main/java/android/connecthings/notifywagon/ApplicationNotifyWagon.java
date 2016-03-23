@@ -11,12 +11,6 @@ import android.connecthings.util.connection.Network;
 import android.connecthings.util.connection.Url;
 
 
-/**
- * Server API Key help
- AIzaSyBbP3q6vgrDVRgX7XWNJgquq4RGRrcMfoQ
- Sender ID: help
- 645651425429
- */
 public class ApplicationNotifyWagon extends Application{
 
     public static final String UUID= "B0462602-CBF5-4ABB-87DE-B05340DCCBC2";
