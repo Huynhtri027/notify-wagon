@@ -48,14 +48,14 @@ public class AdapterFriends extends PagerAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // Setting view you want to display as a row element
         View view = inflater.inflate(R.layout.layout_message_friends, null);
-        TextView message_txt = (TextView) view.findViewById(R.id.tv_friendsMessage);
-        TextView sender_txt = (TextView) view.findViewById(R.id.tv_friendSender);
+        TextView tvMessage = (TextView) view.findViewById(R.id.tv_friendsMessage);
+        TextView tvSender = (TextView) view.findViewById(R.id.tv_friendSender);
 
         try {
             Message messageObject = messages.get(position);
             String messageText = messageObject.getMessage() ;
-            message_txt.setText(messageText+"");
-            sender_txt.setText(messageObject.getSender()+"");
+            tvMessage.setText(messageText + "");
+            tvSender.setText(messageObject.getSender() + "");
             // imageView.setImageResource(image[position]);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
