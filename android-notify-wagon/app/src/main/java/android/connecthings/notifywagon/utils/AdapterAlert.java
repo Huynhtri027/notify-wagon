@@ -72,9 +72,16 @@ public  class AdapterAlert extends PagerAdapter {
         ((ViewPager) collection).removeView((View) view);
 
     }
-
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
     public  void updateListe (List<Message> messageList) {
-        this.messages = messageList;
+        this.messages.clear();
+        if(messageList==null){
+            messageList = new ArrayList<Message>();
+        }
+        this.messages.addAll(messageList);
+        notifyDataSetChanged();
     }
 
 }

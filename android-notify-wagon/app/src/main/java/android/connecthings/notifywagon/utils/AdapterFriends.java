@@ -2,6 +2,7 @@ package android.connecthings.notifywagon.utils;
 
 import android.connecthings.notifywagon.R;
 import android.connecthings.notifywagon.model.Message;
+import android.connecthings.notifywagon.model.Wagon;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -68,9 +69,17 @@ public class AdapterFriends extends PagerAdapter {
     @Override
     public void destroyItem(View collection, int position, Object view) {
         ((ViewPager) collection).removeView((View) view);
-
+    }
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
     public  void updateListe (List<Message> messageList) {
-        this.messages = messageList;
+       this.messages.clear();
+        if(messageList==null){
+            messageList = new ArrayList<Message>();
+        }
+        this.messages.addAll(messageList);
+        notifyDataSetChanged();
+
     }
 }

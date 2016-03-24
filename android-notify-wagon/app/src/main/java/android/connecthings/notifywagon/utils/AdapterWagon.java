@@ -1,7 +1,9 @@
 package android.connecthings.notifywagon.utils;
 
 import android.connecthings.notifywagon.R;
+import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.Message;
+import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.model.Wagon;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 public class AdapterWagon extends PagerAdapter {
     List<Wagon> wagons;
+    NwBeacon nwBeacon;
     @Override
     public int getCount() {
 
@@ -44,6 +47,7 @@ public class AdapterWagon extends PagerAdapter {
     @Override
     public Object instantiateItem(View collection, int position) {
         // Inflating layout
+
         LayoutInflater inflater = (LayoutInflater) collection.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // Setting view you want to display as a row element
@@ -63,9 +67,10 @@ public class AdapterWagon extends PagerAdapter {
                  tvUser.setVisibility(View.VISIBLE);
                  tvUser.setText(user);
             }
-            if (wagonObject.getPosition()>0){
-                tvVoitureNumber.setText("Voiture " + wagonObject.getPosition() + "");
-            }
+            //if (wagonObject.getPosition()+1>0){
+            String placeName = nwBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.NAME);
+               tvVoitureNumber.setText(placeName);
+           // }
             if (friendWagon.get(nextFriend) != null){
                 tvUserSecond.setVisibility(View.VISIBLE);
                 String second = friendWagon.get(position +1);
@@ -81,14 +86,19 @@ public class AdapterWagon extends PagerAdapter {
         ((ViewPager) collection).addView(view, 0);
         return view;
     }
-
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
     @Override
     public void destroyItem(View collection, int position, Object view) {
         ((ViewPager) collection).removeView((View) view);
     }
 
-    public  void updateListe (List<Wagon> wagonList) {
-        this.wagons = wagonList;
+    public  void updateListe (NwBeacon currentBeacon) {
+        this.wagons.clear();
+        nwBeacon = currentBeacon;
+        this.wagons.addAll(currentBeacon.getBox().getWagonBox().getWagons());
+        this.notifyDataSetChanged();
     }
 
 }

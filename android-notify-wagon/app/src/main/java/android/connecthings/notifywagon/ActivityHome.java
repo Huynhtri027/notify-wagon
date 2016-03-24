@@ -41,7 +41,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private AdapterWagon adapter_voiture;
     private ViewPager viewAlertplace, viewAlertvoiture, viewAlertMessagefriends;
     private TextView tvNotifAlert, tvNotifMessage, tvNotiffWagon;
-    private TextView tvPlaceName, tvMetroLigne, tvDirection, tvVitesset, tvTempeature;
+    private TextView tvPlaceName, tvMetroLigne, tvDirection, tvVitesset, tvTempeature, tvInfoWagon;
     private ConnectionManagerServices connectionManagerServices;
 
     private FragmentPushTokenStatus fragmentPushTokenStatus;
@@ -81,11 +81,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvDirection =  (TextView)findViewById(R.id.tv_direction);
         tvVitesset = (TextView)findViewById(R.id.tv_vitesse);
         tvTempeature = (TextView)findViewById(R.id.tv_temperature);
+
         this.initAdapter();
-
-        tvVitesset.setText("");
-        tvTempeature.setText("");
-
 
         fragmentPushTokenStatus = (FragmentPushTokenStatus) getFragmentManager().findFragmentByTag(FragmentPushTokenStatus.TAG);
         if(fragmentPushTokenStatus == null){
@@ -143,7 +140,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         Log.d(TAG, "success friends: ", currentBeacon.getBox().getWagonBox());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
-        this.refreshUpdater(currentBeacon);
+
 
 // check for notification count
         if (currentBeacon.getBox().getMessagePlace().size()>0){
@@ -158,6 +155,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         if (currentBeacon!=null){
             this.setInformationToFirstBox(currentBeacon);
         }
+
+        this.refreshUpdater(currentBeacon);
     }
 
     public void onBackendError(NwBeacon previousBeacon, NwBeacon currentBeacon){
@@ -168,7 +167,16 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     }
 
+
     public void setInformationToFirstBox (NwBeacon currentBeacon){
+
+        tvPlaceName.setText("");
+        tvTempeature.setText("");
+        tvMetroLigne.setText("");
+        tvDirection.setText("");
+        tvVitesset.setText("");
+        tvTempeature.setText("");
+        
         String placeName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.NAME);
         String rootName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.ROOT_NAME);
         String metroLigne = currentBeacon.getValue(AdtagModel.CATEGORY.LINE,AdtagModel.FIELD.LINE);
@@ -180,15 +188,9 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvMetroLigne.setText(getString(R.string.tv_metro_ligne, metroLigne));
         tvDirection.setText(getString(R.string.tv_metro_direction, direction));
 
-
         if(!placeName.toLowerCase().contains(getString(R.string.tv_quai))){
             tvVitesset.setText(getString(R.string.tv_metro_vitesse, vitesse));
             tvTempeature.setText(getString(R.string.tv_metro_temperature, tempeature));
-            LayoutInflater inflater = (LayoutInflater)getApplicationContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.layout_friends, null);
-            TextView voiture_number = (TextView) view.findViewById(R.id.tv_voiture_information);
-            voiture_number.setText("tesssssst");
         }
 
     }
@@ -209,12 +211,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         //update liste from refreshing adapter
         adpter_alert_message.updateListe(currentBeacon.getBox().getMessagePlace());
         adpter_message_friends.updateListe(currentBeacon.getBox().getMessageFriends());
-        adapter_voiture.updateListe(currentBeacon.getBox().getWagonBox().getWagons());
+        adapter_voiture.updateListe(currentBeacon);
         //update updater
         adpter_alert_message.notifyDataSetChanged();
         adpter_message_friends.notifyDataSetChanged();
         adapter_voiture.notifyDataSetChanged();
     }
-
-
 }
