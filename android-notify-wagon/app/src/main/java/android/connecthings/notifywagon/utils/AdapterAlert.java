@@ -48,16 +48,16 @@ public  class AdapterAlert extends PagerAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // Setting view you want to display as a row element
         View view = inflater.inflate(R.layout.layout_alert_message, null);
-        TextView message_txt = (TextView) view.findViewById(R.id.tv_textMessageAlert);
-        TextView type_txt = (TextView) view.findViewById(R.id.tv_typeAlert);
-        TextView sender_txt = (TextView) view.findViewById(R.id.tv_sender_message_alert);
+        TextView tvMessage = (TextView) view.findViewById(R.id.tv_textMessageAlert);
+        TextView tvTypeAlert = (TextView) view.findViewById(R.id.tv_typeAlert);
+        TextView tvSender = (TextView) view.findViewById(R.id.tv_sender_message_alert);
 
         try {
             Message messageObject = messages.get(position);
             String messageText = messageObject.getMessage() ;
-            message_txt.setText(messageText+"");
-            type_txt.setText(messageObject.getType().getTitleId());
-            sender_txt.setText(messageObject.getSender()+"");
+            tvMessage.setText(messageText+"");
+            tvTypeAlert.setText(messageObject.getType().getTitleId());
+            tvSender.setText(messageObject.getSender()+"");
            // imageView.setImageResource(image[position]);
         } catch (Exception e1) {
             // TODO Auto-generated catch block
