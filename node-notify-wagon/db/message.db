@@ -1,3 +1,6 @@
 {"message":"La climatisation de votre train ne fonctionne pas. Veuillez nous excuser.","type":"alert","sender":"RATP","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"YWgVoLjhAgIbB7ZP"}
 {"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"ss demo","type":"pickpocket","_id":"kC4R8nFl9k3xEQjU"}
 {"message":"N'oubliez pas ce soir la soirée OhOhOh","type":"social","sender":"Jean-No","places":["theo-wa1","theo-wa2","theo-wa3"],"direction":"Porte de Vincennes","line":"1","_id":"riDsVB8fvSP2Bzcc"}
+{"message":"Attention un pickpocket est action","places":["theo-wa1"],"sender":"sarra","type":"pickpocket","_id":"uT0N05mMoDQlm5it"}
+{"message":"Une agression est en cours. Pouvez-vous aider ?","places":["theo-wa1"],"sender":"sarra","type":"agression","_id":"A6FmlYKOCHYT0jFc"}
+{"message":"J'ai oubli� mon sac bleu ciel","places":["theo-wa1"],"sender":"olivier","type":"lost","_id":"11J2mYbHWoIJ4kAm"}
