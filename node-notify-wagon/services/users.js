@@ -17,6 +17,16 @@ db.ensureIndex({fieldName:'pseudo', unique:true});
 module.exports.save = function(user, callback){
   db.insert(user, callback);
 }
+
+module.exports.insertOrUpdate = function(user, callback){
+  db.insert(user, function(error, data){
+    if(error){
+      db.update({phoneId:user.phoneId},{$set:user},{}, callback);
+      return;
+    }
+    callback(null, data);
+  });
+}
 //#TODO: using phoneId but as consequence on places.findFriendsInPlace
 module.exports.update = function(pseudo, data, callback){
   db.update({pseudo:pseudo}, {$set: data}, {}, callback);

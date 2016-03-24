@@ -15,6 +15,7 @@ import android.connecthings.notifywagon.utils.ConnectionManagerServices;
 import android.connecthings.util.BLE_STATUS;
 import android.connecthings.util.Log;
 import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;

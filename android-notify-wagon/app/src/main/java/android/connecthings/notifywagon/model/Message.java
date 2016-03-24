@@ -1,5 +1,6 @@
 package android.connecthings.notifywagon.model;
 
+import android.connecthings.notifywagon.R;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -9,13 +10,23 @@ import java.util.List;
  */
 public class Message {
 
-    public static enum TYPE{alert, social, clean, lost, agression, ill, pickpocket;
+    public static enum TYPE{alert(R.string.title_alert),
+                            social(R.string.title_social),
+                            clean(R.string.title_clean),
+                            lost(R.string.title_lost),
+                            agression(R.string.title_agression),
+                            ill(R.string.title_ill),
+                            pickpocket(R.string.title_pickpocket);
 
-        /*private final int stringId;
+        private final int titleId;
 
-        TYPE(int stringId) {
-            this.stringId = stringId;
-        }*/
+        TYPE(int titleId) {
+            this.titleId = titleId;
+        }
+
+        public int getTitleId() {
+            return titleId;
+        }
     };
 
     private String message;
