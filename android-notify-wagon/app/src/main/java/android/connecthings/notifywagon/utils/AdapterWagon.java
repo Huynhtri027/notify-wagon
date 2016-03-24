@@ -49,23 +49,27 @@ public class AdapterWagon extends PagerAdapter {
         // Setting view you want to display as a row element
         View view = inflater.inflate(R.layout.layout_friends, null);
        // call textview
-        TextView voiture_number = (TextView) view.findViewById(R.id.tv_voiture_information);
-        TextView user_txt = (TextView) view.findViewById(R.id.tv_user_name);
-        TextView secondUser_txt = (TextView) view.findViewById(R.id.tv_second_user_name);
-        TextView userNumber = (TextView) view.findViewById(R.id.tv_numberOfUser);
+        TextView tvVoitureNumber = (TextView) view.findViewById(R.id.tv_voiture_information);
+        TextView tvUser = (TextView) view.findViewById(R.id.tv_user_name);
+        TextView tvUserSecond = (TextView) view.findViewById(R.id.tv_second_user_name);
+        TextView tvUserNumber = (TextView) view.findViewById(R.id.tv_numberOfUser);
+
         try {
             Wagon wagonObject = wagons.get(position);
             List<String> friendWagon = wagonObject.getUsers();
             String user = friendWagon.get(position);
             int nextFriend =  position + 1 ;
-            int wagonposition = wagonObject.getPosition()+1 ;
-            Log.d("numerroooooo ",wagonObject.getPosition()+"");
-            user_txt.setText(user);
-            voiture_number.setText("Voiture "+wagonObject.getPosition() +"");
-
+            if (user.length()>0){
+                 tvUser.setVisibility(View.VISIBLE);
+                 tvUser.setText(user);
+            }
+            if (wagonObject.getPosition()>0){
+                tvVoitureNumber.setText("Voiture " + wagonObject.getPosition() + "");
+            }
             if (friendWagon.get(nextFriend) != null){
+                tvUserSecond.setVisibility(View.VISIBLE);
                 String second = friendWagon.get(position +1);
-                secondUser_txt.setText(second);
+                tvUserSecond.setText(second);
             }
 
             // update view

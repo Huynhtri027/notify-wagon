@@ -21,6 +21,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,6 +82,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         vitesset_txt = (TextView)findViewById(R.id.tv_vitesse);
         tempeature_txt = (TextView)findViewById(R.id.tv_temperature);
         this.initAdapter();
+
+        vitesset_txt.setText("");
+        tempeature_txt.setText("");
+
 
         fragmentPushTokenStatus = (FragmentPushTokenStatus) getFragmentManager().findFragmentByTag(FragmentPushTokenStatus.TAG);
         if(fragmentPushTokenStatus == null){
@@ -174,8 +179,18 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         placeName_txt.setText(rootName + " - " + placeName + "");
         metroLigne_txt.setText(getString(R.string.tv_metro_ligne, metroLigne));
         direction_txt.setText(getString(R.string.tv_metro_direction,direction));
-        vitesset_txt.setText(getString(R.string.tv_metro_vitesse,vitesse));
-        tempeature_txt.setText(getString(R.string.tv_metro_temperature,tempeature));
+
+
+        if(!placeName.toLowerCase().contains(getString(R.string.tv_quai))){
+            vitesset_txt.setText(getString(R.string.tv_metro_vitesse,vitesse));
+            tempeature_txt.setText(getString(R.string.tv_metro_temperature, tempeature));
+            LayoutInflater inflater = (LayoutInflater)getApplicationContext()
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.layout_friends, null);
+            TextView voiture_number = (TextView) view.findViewById(R.id.tv_voiture_information);
+            voiture_number.setText("tesssssst");
+        }
+
     }
 
     public void initAdapter(){
