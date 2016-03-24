@@ -3,7 +3,6 @@ var rootPath = "/api/user";
 var _ = require("lodash");
 var Boom = require("boom");
 var log = require("../utils/log")();
-var servicePlacesold = require("../services/places_old");
 var servicePlaces = require("../services/places");
 var serviceUsers = require("../services/users");
 var serviceMobileBox = require('../services/mobileBox');

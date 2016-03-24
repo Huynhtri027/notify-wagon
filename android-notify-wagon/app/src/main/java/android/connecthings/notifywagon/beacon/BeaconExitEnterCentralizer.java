@@ -1,25 +1,15 @@
 package android.connecthings.notifywagon.beacon;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.connecthings.adtag.model.sdk.BeaconContent;
-import android.connecthings.notifywagon.ActivityHome;
-import android.connecthings.notifywagon.R;
 import android.connecthings.notifywagon.ResponseHandler.GsonResponseHandler;
 import android.connecthings.notifywagon.model.AdtagModel;
 import android.connecthings.notifywagon.model.Box;
 import android.connecthings.notifywagon.model.EnterExitBox;
 import android.connecthings.notifywagon.model.NwBeacon;
 import android.connecthings.notifywagon.utils.ConnectionManagerServices;
-import android.connecthings.notifywagon.utils.NotificationUtils;
 import android.connecthings.notifywagon.utils.NwSharedPreference;
 import android.connecthings.util.Log;
-import android.connecthings.util.adtag.beacon.AdtagBeaconManager;
 import android.content.Context;
-import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -95,6 +85,12 @@ public class BeaconExitEnterCentralizer {
         notifyBackendAboutExitEnter(previousBeaconContent, currentBeaconContent);
     }
 
+    public void onProgressBackendAdtag(){
+        if(this.onEnterPlace != null){
+            this.onEnterPlace.onProgressBackendAdtag();
+        }
+    }
+
     public BeaconContent getPreviousBeaconContent(){
         return previousBeaconContent;
     }
@@ -106,7 +102,7 @@ public class BeaconExitEnterCentralizer {
 
     private void notifyBackendAboutExitEnter(final BeaconContent previousBeaconContent, final BeaconContent currentBeaconContent) {
         if(onEnterPlace != null){
-            onEnterPlace.onProgress();
+            onEnterPlace.onProgressBackendNotifyTrain();
         }
 
         if(TextUtils.isEmpty(pseudo)){

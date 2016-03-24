@@ -1,6 +1,5 @@
 "use strict";
 const rootPath = "/api/message";
-const servicePlacesold = require('../services/places_old');
 const servicePlaces = require('../services/places');
 const serviceUsers = require('../services/users');
 const serviceMessages = require('../services/messages');
@@ -34,7 +33,7 @@ module.exports = [
           path: rootPath + '/send/to/{place}',
           config: {
               handler: function (request, reply) {
-                var users = servicePlacesold.findUsers(request.params.place);
+                //var users = servicePlacesold.findUsers(request.params.place);
                 reply(users);
               }
           }
@@ -44,7 +43,7 @@ module.exports = [
         path: rootPath +'/send/to/all/{type}',
         config: {
             handler: function (request, reply) {
-              reply(servicePlacesold.findIdsAndUsersRoots(request.params.type));
+              //reply(servicePlacesold.findIdsAndUsersRoots(request.params.type));
             }
         }
       },
@@ -53,7 +52,7 @@ module.exports = [
         path: rootPath + '/send/to/root/{place}',
         config: {
             handler: function (request, reply) {
-              reply(servicePlacesold.findIdsAndUsersRoot(request.params.place));
+              //reply(servicePlacesold.findIdsAndUsersRoot(request.params.place));
             }
         }
       },

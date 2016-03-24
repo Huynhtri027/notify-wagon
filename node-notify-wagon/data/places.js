@@ -7,13 +7,13 @@ module.exports =[
       "type":"station",
       "items":[
         {
-          "id":"l1-pv-chat",
+          "id":"l1-pv-chatelet",
           "name":"Quai ligne 1 direction Chatelet",
           "line":"1",
           "direction":"Vincennes"
         },
         {
-          "id":"l1-pm-chat",
+          "id":"l1-pm-chatelet",
           "name":"Quai ligne 1 direction Porte Maillot",
           "line":"1",
           "direction":"Porte Maillot"

@@ -52,5 +52,8 @@
     <string name="msg_ill">Une personne est malade. Pouvez-vous aider ?</string>
     <string name="msg_lost">J\'ai oublié mon sac bleu ciel</string>
 
-
+    <string name="no_beacon_title">Aucun lieux detecté</string>
+    <string name="no_beacon_description">Aucun lieux n\'est détecté pour le moment. Etes-vous dans une gare ou un train ?</string>
+    <string name="in_progress_title">Lieux détecté</string>
+    <string name="in_progress_description">Un lieux a été détecté. Les données associées sont en cours de chargement...</string>
 </resources>
