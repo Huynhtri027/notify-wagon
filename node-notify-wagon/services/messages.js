@@ -92,17 +92,19 @@ module.exports.msgInBoxForPlace = function(itemId, callback){
   }else{
     items = place.items;
   }
-  console.log(">> items: ", items);
+  log.d(">> items: ", items);
   items = _.map(items, "id");
-  console.log(">> items2: ", items);
-  //places:{$in:items},
   db.find({ type:{$ne:'social'},places:{$in:items}}, callback);
 }
 
 module.exports.msgInBoxFromFriends = function(itemId, callback){
   var place = servicePlaces.findPlace(itemId);
   var items = _.map(place.items, "id");
-  console.log(">> items 3: ", place.items);
+  log.d(">> items 3: ", place.items);
+  if(place == null){
+    callback(new Error("No place found"))
+    return;
+  }
   if(place.type ===  'station'){
     //places:{$in:place.items}
     db.find({ type:'social', places:{$in:place.items}}, callback);

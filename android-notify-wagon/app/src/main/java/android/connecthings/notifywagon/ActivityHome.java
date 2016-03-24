@@ -30,6 +30,7 @@ import android.widget.TextView;
 public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
     private static final String TAG = "ActivityHome";
+    private static final int[] VIEWS_CONTENT=new int[]{R.id.boxAlert, R.id.boxFriends, R.id.boxMessageFriends};
 
     private NwBeaconRange nwBeaconRange;
     private AdtagBeaconManager adtagBeaconManager;
@@ -39,9 +40,10 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
     private AdapterAlert adpter_alert_message;
     private AdapterFriends adpter_message_friends;
     private AdapterWagon adapter_voiture;
+
     private ViewPager viewAlertplace, viewAlertvoiture, viewAlertMessagefriends;
     private TextView tvNotifAlert, tvNotifMessage, tvNotiffWagon;
-    private TextView tvPlaceName, tvMetroLigne, tvDirection, tvVitesset, tvTempeature, tvInfoWagon;
+    private TextView tvPlaceName, tvMetroLigne, tvDirection, tvVitesse, tvTempeature;
     private ConnectionManagerServices connectionManagerServices;
 
     private FragmentPushTokenStatus fragmentPushTokenStatus;
@@ -79,9 +81,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvPlaceName = (TextView)findViewById(R.id.tv_gare);
         tvMetroLigne = (TextView)findViewById(R.id.tv_ligneMetro);
         tvDirection =  (TextView)findViewById(R.id.tv_direction);
-        tvVitesset = (TextView)findViewById(R.id.tv_vitesse);
+        tvVitesse = (TextView)findViewById(R.id.tv_vitesse);
         tvTempeature = (TextView)findViewById(R.id.tv_temperature);
-
         this.initAdapter();
 
         fragmentPushTokenStatus = (FragmentPushTokenStatus) getFragmentManager().findFragmentByTag(FragmentPushTokenStatus.TAG);
@@ -135,14 +136,20 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         return super.onOptionsItemSelected(item);
     }
 
+    private void updateBoxVisibility(int visibility){
+        for(int idView: VIEWS_CONTENT){
+            findViewById(idView).setVisibility(visibility);
+        }
+    }
+
     public void onEnterPlace(NwBeacon previousBeacon, NwBeacon currentBeacon){
-     //  placeName.setText(currentBeacon.getValue(AdtagModel.CATEGORY.PLACE, AdtagModel.FIELD.NAME));
+        updateBoxVisibility(View.VISIBLE);
         Log.d(TAG, "success friends: ", currentBeacon.getBox().getWagonBox());
         Log.d(TAG, "success message place: ", currentBeacon.getBox().getMessagePlace());
         Log.d(TAG, "success message friends: ", currentBeacon.getBox().getMessageFriends());
 
 
-// check for notification count
+        // check for notification count
         if (currentBeacon.getBox().getMessagePlace().size()>0){
             tvNotifAlert.setText(currentBeacon.getBox().getMessagePlace().size() + "");
         }
@@ -163,7 +170,15 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         Log.d(TAG, "backend error");
     }
 
-    public void onProgress() {
+    public void onProgressBackendAdtag(){
+        tvPlaceName.setText(R.string.in_progress_title);
+        tvMetroLigne.setText(R.string.in_progress_description);
+        tvVitesse.setText("");
+        tvTempeature.setText("");
+        updateBoxVisibility(View.GONE);
+    }
+
+    public void onProgressBackendNotifyTrain() {
 
     }
 
@@ -174,7 +189,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvTempeature.setText("");
         tvMetroLigne.setText("");
         tvDirection.setText("");
-        tvVitesset.setText("");
+        tvVitesse.setText("");
         tvTempeature.setText("");
 
         String placeName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.NAME);
@@ -189,14 +204,12 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvDirection.setText(getString(R.string.tv_metro_direction, direction));
 
         if(!placeName.toLowerCase().contains(getString(R.string.tv_quai))){
-            tvVitesset.setText(getString(R.string.tv_metro_vitesse, vitesse));
+            tvVitesse.setText(getString(R.string.tv_metro_vitesse, vitesse));
             tvTempeature.setText(getString(R.string.tv_metro_temperature, tempeature));
         }
-
     }
 
     public void initAdapter(){
-
         adpter_alert_message = new AdapterAlert();
         viewAlertplace.setAdapter(adpter_alert_message);
 
@@ -205,8 +218,8 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
 
         adapter_voiture = new AdapterWagon();
         viewAlertvoiture.setAdapter(adapter_voiture);
-
     }
+
     public void refreshUpdater(NwBeacon currentBeacon){
         //update liste from refreshing adapter
         adpter_alert_message.updateListe(currentBeacon.getBox().getMessagePlace());

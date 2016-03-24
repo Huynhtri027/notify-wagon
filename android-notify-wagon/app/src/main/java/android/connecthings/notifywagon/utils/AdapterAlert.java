@@ -55,9 +55,9 @@ public  class AdapterAlert extends PagerAdapter {
         try {
             Message messageObject = messages.get(position);
             String messageText = messageObject.getMessage() ;
-            tvMessage.setText(messageText + "");
-            tvTypeAlert.setText(messageObject.getType().toString() + "");
-            tvSender.setText(messageObject.getSender() + "");
+            tvMessage.setText(messageText+"");
+            tvTypeAlert.setText(messageObject.getType().getTitleId());
+            tvSender.setText(messageObject.getSender()+"");
            // imageView.setImageResource(image[position]);
         } catch (Exception e1) {
             // TODO Auto-generated catch block

@@ -18,6 +18,7 @@ public class NwBeaconRange implements BeaconRange{
     private static final String TAG = "NwBeaconRange";
     private List<BeaconContent> previousBeaconContentList = null;
     private BeaconExitEnterCentralizer beaconExitEnterCentralizer;
+    private int previousBeaconSize = 0;
 
     public NwBeaconRange(){
         beaconExitEnterCentralizer = BeaconExitEnterCentralizer.getInstance();
@@ -26,6 +27,11 @@ public class NwBeaconRange implements BeaconRange{
     @Override
     public void didRangeBeaconsInRegion(List<AppleBeacon> beacons, List<BeaconContent> beaconContents, Region region, BeaconContent.INFORMATION_STATUS information_status, FEED_STATUS feed_status) {
         Log.d(TAG, "ranging ", beacons, " beaconContents ", beaconContents);
+        if(beacons.size() !=0 && beacons.size() != beaconContents.size() && previousBeaconSize != beacons.size()){
+            beaconExitEnterCentralizer.onProgressBackendAdtag();
+            previousBeaconSize = beacons.size();
+            return;
+        }
         if(previousBeaconContentList != null){
             beaconContents.removeAll(previousBeaconContentList);
             Log.d(TAG, "beaconContents: ", beaconContents);
