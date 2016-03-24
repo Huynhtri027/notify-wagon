@@ -176,7 +176,7 @@ public class ActivityHome extends AppCompatActivity  implements OnEnterPlace{
         tvDirection.setText("");
         tvVitesset.setText("");
         tvTempeature.setText("");
-        
+
         String placeName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.NAME);
         String rootName = currentBeacon.getValue(AdtagModel.CATEGORY.PLACE,AdtagModel.FIELD.ROOT_NAME);
         String metroLigne = currentBeacon.getValue(AdtagModel.CATEGORY.LINE,AdtagModel.FIELD.LINE);
