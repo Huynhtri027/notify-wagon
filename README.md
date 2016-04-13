@@ -47,7 +47,7 @@ Our integrated Internet of Things platform has been awarded by numerous smart c
 Connecthings’ services are up and running in more than 20 cities in Europe and in Rio de Janeiro, with over 100 000 beacons connected in the urban space: this is the largest Internet of Public Things network worldwide.   
 Connecthings is based in Paris, New York, Rio de Janeiro, Barcelona, Milan and Berlin.
 
-[www.connecthings.com](https://www.connecthings.com)  
+[www.connecthings.com](http://www.connecthings.com)  
 [@Connecthings](https://twitter.com/connecthings)   
 [contact@connecthings.com](mailto:contact@connecthings.com)   
 
