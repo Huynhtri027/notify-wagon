@@ -31,6 +31,7 @@ One can easily transpose the train use case to public venues (like stadiums).
 
 Adtag is Connecthings’ SaaS web interface that will allow you to manage the generic information about coach or platform in association with beacons.  
 The mobile SDK allows to detect beacons and to retrieve the content attached to them in Adtag.
+
 We develop a specific backend (node-notify-wagon) that has the responsibility of:   
 - registering the entry and the exit of a user related to a place
 - registering the messages the users exchange related to a place
