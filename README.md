@@ -5,9 +5,10 @@ This project has been developed live by Connecthings Dev Team during the [Alstom
 ## Generic use case
 
 Beacon will be used to localize users in order to:
-- display live information related to the location a user is
-- allow the users that are in the same location to send message from one to another
-- allow a back-end manager to know how many people (with downloaded application) are in one given location and to send a message to these specific users.
+- display live information related to the user's location
+- allow all users in the same location to send a text messages 
+- allow a back-end manager to know how many people (with downloaded application) are in specific location.
+- allow a back-end manager to send a text messages to specific users.
 
 ## Use cases applied to trains, railway stations and platforms environments
 
