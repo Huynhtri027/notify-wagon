@@ -46,10 +46,8 @@ Connecthings rolls out in the public space contactless technologies (Bluetooth
 
 Our integrated Internet of Things platform has been awarded by numerous smart city and innovation international prizes. The platform enables our clients to easily create and manage contextual information aimed at mobile users evolving in the urban environment – on all or parts of our network of contactless beacons.
 
-Connecthings’ services are up and running in more than 20 cities in Europe and in Rio de Janeiro, with over 100 000 beacons connected in the urban space: this is the largest Internet of Public Things network worldwide.   
-Connecthings is based in Paris, New York, Rio de Janeiro, Barcelona, Milan and Berlin.
+To know about Connecthings, visit [our website](http://www.connecthings.com)  
 
-[www.connecthings.com](http://www.connecthings.com)  
 [@Connecthings](https://twitter.com/connecthings)   
 [contact@connecthings.com](mailto:contact@connecthings.com)   
 
