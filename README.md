@@ -42,6 +42,4 @@ We develop a specific backend (node-notify-wagon) that has the responsibility of
 
 To learn more about Connecthings, visit [our website](http://www.connecthings.com)  
 
-[@Connecthings](https://twitter.com/connecthings)   
-[contact@connecthings.com](mailto:contact@connecthings.com)   
 
