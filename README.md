@@ -40,12 +40,6 @@ We develop a specific backend (node-notify-wagon) that has the responsibility of
 
 ## About Connecthings
 
-Laetitia Gazel Anthoine founded Connecthings in 2007 with the powerful vision that smartphones will ultimately connect the physical world with the digital world.
-
-Connecthings rolls out in the public space contactless technologies (Bluetooth Low Energy, NFC, QR code, Wi-Fi) turning urban, passive physical assets (street furniture, bus stops, public lighting…) into smart, connected objects now able to interact in the city with mobile users in bringing contextualized, high added value information.
-
-Our integrated Internet of Things platform has been awarded by numerous smart city and innovation international prizes. The platform enables our clients to easily create and manage contextual information aimed at mobile users evolving in the urban environment – on all or parts of our network of contactless beacons.
-
 To know about Connecthings, visit [our website](http://www.connecthings.com)  
 
 [@Connecthings](https://twitter.com/connecthings)   
